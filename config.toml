@@ -1,0 +1,28 @@
+baseurl = "/"
+title = "RAC's notepad"
+languageCode = "en-us"
+paginate = "10" # Number of posts per page
+theme = "mainroad"
+disqusShortname = "rac-su" # Enable comments by entering your Disqus shortname
+googleAnalytics = "UA-92066434-1" # Enable Google Analytics by entering your tracking id
+
+[Author]
+    name = "Michel Racic"
+    bio = "I’m a coding and technology freak. I finished once my bachelor of engineering in computer science or on german “Dipl. Ing.” and currently I’m mostly coding in Java as main language besides some stuff in C, C++, C#, HTML, JS, … - In my day job I work as a Software Engineer in Test and deal with all kind of Software from Native over Web into Mainframe where I use existing tools or write my own testing apps or libraries and the Frameworks around that they can be used in the most efficient way."
+    avatar = "img/rac-300x300.jpg"
+
+
+[Params]
+    subtitle = "Just some braindumps" # Subtitle of your site
+    description = "Just a space where I write down stuff for my own reuse..." # Description of your site
+    opengraph = true
+    leftsidebar = false # Move sidebar to the left side if true
+    authorbox = true
+    post_navigation = true
+
+
+[Params.widgets]
+    search = true # Enable "Search" widget
+    recent_articles = true # Enable "Recent arcticles" widget 
+    categories = true # Enable "Categories" widget
+    tags = true # Enable "Tags" widget

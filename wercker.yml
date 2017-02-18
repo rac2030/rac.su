@@ -24,4 +24,11 @@ build:
         version: "0.18.1"
         theme: mainroad
         flags: --buildDrafts=true
-    
+deploy:
+  steps:
+    - install-packages:
+        packages: git ssh-client
+    - lukevivier/gh-pages@0.2.1:
+        token: $GIT_TOKEN
+        domain: rac.su
+        basedir: public

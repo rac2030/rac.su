@@ -14,5 +14,5 @@ deploy:
 # Deploy the public folder to gh_pages branch
     - lukevivier/gh-pages@0.2.1:
         token: $GIT_TOKEN
-#        domain: rac.su
+        domain: rac.su
         basedir: public

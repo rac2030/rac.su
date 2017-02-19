@@ -5,4 +5,5 @@ date = ""
 categories = []
 tags = []
 thumbnail = ""
+draft = true
 +++

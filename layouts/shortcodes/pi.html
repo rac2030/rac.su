@@ -1,0 +1,114 @@
+<div>
+  <pre id='pi'></pre>
+  <a href="http://stephenbrooks.org/misc/jspi/decimal_animated.html">Source link</a>
+  <script type='text/javascript'>
+  function Decimal(digits)
+  { // Returns it zeroed
+    this.d=new Array; this.m=digits;
+    for (n=digits;n>=0;n--) this.d[n]=0;
+  }
+  Decimal.prototype.copy=function()
+  {
+    ret=new Decimal(this.m);
+    for (n=this.m;n>=0;n--) ret.d[n]=this.d[n];
+    return ret;
+  }
+  Decimal.prototype.toString=function(safety)
+  {
+    if (this.d[0]<0) {x=this.copy(); x.invertSign(); return '-'+x.toString();}
+    ret=this.d[0]+'.';
+    for (n=1;n<=this.m-safety;n++)
+    {
+      ret+=this.d[n];
+      if (n%10==0) {if (n%50==0) ret+=String.fromCharCode(10)+'  '; else ret+=' ';}
+    }
+    return ret;
+  }
+  function convergedDecimals(a,b,safety)
+  {
+    if (a.d[0]<0)
+    {
+      na=a.copy(); a.invertSign();
+      nb=b.copy(); b.invertSign();
+      return '-'+convergedDecimals(na,nb);
+    }
+    ret=a.d[0]+'.';
+    for (n=1;n<=a.m-safety && a.d[n]==b.d[n];n++)
+    {
+      ret+=a.d[n];
+      if (n%10==0) {if (n%50==0) ret+=String.fromCharCode(10)+'  '; else ret+=' ';}
+    }
+    return ret;
+  }
+  function equalDecimals(a,b)
+  {
+    if (a.m!=b.m) return 0;
+    for (n=a.m;n>=0;n--) if (a.d[n]!=b.d[n]) return 0;
+    return 1;
+  }
+  Decimal.prototype.setValue=function(x)
+  {
+    for (n=0;n<=this.m;n++)
+    {
+      x-=(this.d[n]=Math.floor(x));
+      x*=10;
+    }
+  }
+  Decimal.prototype.invertSign=function()
+  { // The idea is to keep all the digits except d[0] from being negative
+    for (n=0;n<=this.m;n++)
+    {
+      this.d[n]*=-1;
+      for (i=n;this.d[i]<0 && i>0;i--) {this.d[i]+=10; this.d[i-1]--;}
+    }
+  }
+  Decimal.prototype.addDecimal=function(x)
+  {
+    for (n=this.m;n>=0;n--)
+    {
+      this.d[n]+=x.d[n];
+      if (this.d[n]>=10 && n>0) {this.d[n]-=10; this.d[n-1]++;}
+    }
+  }
+  Decimal.prototype.divideInt=function(x)
+  {
+    r=0;
+    for (n=0;n<=this.m;n++)
+    {
+      r+=this.d[n];
+      this.d[n]=q=Math.floor(r/x);
+      r=(r-q*x)*10;
+    }
+  }
+  function print(id,s)
+  {
+    x=document.getElementById(id);
+    if (!x.firstChild) x.appendChild(document.createTextNode('Mallards'));
+    x.firstChild.nodeValue=s;
+  }
+  var sum,ta,tb,k;
+  function piestart(digits)
+  {
+    sum=new Decimal(digits+10); k=0;
+    ta=new Decimal(digits+10); ta.setValue(16); ta.divideInt(5);
+    tb=new Decimal(digits+10); tb.setValue(-4); tb.divideInt(239);
+    pieiter();
+  }
+  function pieiter()
+  {
+    //sum+=16*Math.pow(-1,k)/((2*k+1)*Math.pow(5,2*k+1))-4*Math.pow(-1,k)/((2*k+1)*Math.pow(239,2*k+1));
+    a=ta.copy(); a.divideInt(2*k+1);
+    b=tb.copy(); b.divideInt(2*k+1);
+    old=sum.copy();
+    sum.addDecimal(a); sum.addDecimal(b);
+    ta.invertSign(); ta.divideInt(25);
+    tb.invertSign(); tb.divideInt(239*239);
+    k++;
+    print('pi',sum.toString(10));
+    if (!equalDecimals(sum,old)) setTimeout(pieiter,0);
+    else print('button','Calculate again!');
+  }
+  piestart(Math.floor({{ index .Params 0 }}));
+
+  </script>
+</div>

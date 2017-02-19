@@ -8,9 +8,7 @@ tags = [
 ]
 date = "2017-02-04"
 categories = [
-    "Arduino",
-    "Hackathon",
-    "Project"
+    "Arduino"
 ]
 draft = true
 +++

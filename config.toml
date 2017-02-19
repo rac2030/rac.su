@@ -26,3 +26,22 @@ googleAnalytics = "UA-92066434-1" # Enable Google Analytics by entering your tra
     recent_articles = true # Enable "Recent arcticles" widget 
     categories = true # Enable "Categories" widget
     tags = true # Enable "Tags" widget
+
+[[menu.main]]
+    name = "Projects"
+    pre = "<i class='fa fa-heart'></i>"
+    weight = -110
+    identifier = "projects"
+    url = "/categories/project/"
+[[menu.main]]
+    name = "Libraries"
+    pre = "<i class='fa fa-road'></i>"
+    weight = -100
+    identifier = "libraries"
+    url = "/categories/library/"
+[[menu.main]]
+    name = "Social Stream"
+    pre = "<i class='fa fa-road'></i>"
+    weight = -100
+    identifier = "socialstream"
+    url = "/socialstream/"

@@ -4,11 +4,13 @@ description = "tbw."
 tags = [
     "arduino",
     "hackathon",
+    "LoraWAN"
 ]
 date = "2017-02-04"
 categories = [
     "Arduino",
     "Hackathon",
+    "Project"
 ]
 draft = true
 +++

@@ -17,6 +17,12 @@ This Arduino library can be used to interface the [SDP3x](https://www.sensirion.
 
 <!--more-->
 
+# Installation
+For now clone the [github repository](https://github.com/rac2030/Arduino-Sensirion-SDP3x-driver) or download and unpackt a [Zipped version](https://github.com/rac2030/Arduino-Sensirion-SDP3x-driver/archive/master.zip) into the libraries folder of your Arduino IDE.
+{{< highlight bash "style=emacs" >}}
+git clone https://github.com/rac2030/Arduino-Sensirion-SDP3x-driver.git
+{{< /highlight >}}
+
 # Usage example
 {{< highlight cpp "linenos=inline,style=emacs" >}}
 // To set a different I2C address, uncomment the define

@@ -18,3 +18,4 @@ Some links I collected with information about how to use Hugo.
 * [Single content templates](https://gohugo.io/templates/content/)
 * [Embedding Youtube videos in hugo with builtin shortcodes](https://gohugo.io/extras/shortcodes/#youtube)
 * [Creating own shortcodes with HTML and javascript snippets](https://gohugo.io/extras/shortcodes/#creating-your-own-shortcodes)
+* [Syntax highlighting in Hugo](https://gohugo.io/extras/highlighting/)

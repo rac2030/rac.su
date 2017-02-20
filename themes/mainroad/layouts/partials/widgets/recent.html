@@ -3,7 +3,7 @@
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
-			{{- range first 10 (where .Site.Pages "Section" "post") }}
+			{{- range first 10 (where .Site.Pages "Section" "in" (slice "post" "libs" "project")) }}
 			<li class="widget__item"><a class="widget__link" href="{{ .RelPermalink }}">{{ .Title }}</a></li>
 			{{- end }}
 		</ul>

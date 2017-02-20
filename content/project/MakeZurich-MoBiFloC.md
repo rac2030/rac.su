@@ -35,6 +35,10 @@ A cheap and mobile bike commuter flow counter node to enhance the existing senso
 The Arduino and the NodeJS WebApplication is available on on GitHub @ 
 https://github.com/rac2030/MakeZurich/tree/master/MoBiFloC
 
+### LoraWAN data receiver web GUI in action
+{{< youtube id="UFf2p6Vvhg4" autoplay="false" >}}
+
 ### Presentation on the second day at the end of the hackathon
 {{< youtube id="oF1MmIcnQl0" autoplay="false" >}}
+
 

@@ -12,10 +12,12 @@ categories = [
 ]
 draft = false
 +++
+
 Project entry for the [MakeZurich](https://makezurich.ch) 2017 Hackathon.
 
-# Summary
 A cheap and mobile bike commuter flow counter node to enhance the existing sensor network. This will also be helpful to quickly bring up nodes at the right place to evaluate new routes and how they are used.
+
+<!--more-->
 
 # Used Hardware
 * Arduino Pro Mini 3.3V (8MHz)

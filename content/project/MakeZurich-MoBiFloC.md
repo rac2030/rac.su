@@ -19,6 +19,9 @@ A cheap and mobile bike commuter flow counter node to enhance the existing senso
 
 <!--more-->
 
+# Challange
+
+
 # Used Hardware
 * Arduino Pro Mini 3.3V (8MHz)
 * [Microchip RN2483 LoRaWAN modem](https://github.com/rac2030/MakeZurich/wiki/Hello-Lora-with-Arduino-Pro-mini-and-Microchip-RN2483)

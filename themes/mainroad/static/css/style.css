@@ -802,6 +802,20 @@ img {
 	vertical-align: bottom;
 }
 
+.floatright {
+	max-width: 30%;
+	width: auto\9*0.3; /* ie8 */
+	height: auto;
+	float: right;
+}
+
+.floatleft {
+	max-width: 30%;
+	width: auto\9*0.3; /* ie8 */
+	height: auto;
+	float: left;
+}
+
 iframe, embed, object, video {
 	max-width: 100%;
 }

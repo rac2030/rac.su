@@ -802,18 +802,30 @@ img {
 	vertical-align: bottom;
 }
 
-.floatright {
+figure.size30p {
+	max-width: 30%;
+	width: auto\9*0.3; /* ie8 */
+	height: auto;
+	margin: 5px 0 20px 20px;
+	margin: 0.3125rem 0 1.25rem 1.25rem;
+}
+
+figure.floatright {
 	max-width: 30%;
 	width: auto\9*0.3; /* ie8 */
 	height: auto;
 	float: right;
+	margin: 5px 0 20px 20px;
+	margin: 0.3125rem 0 1.25rem 1.25rem;
 }
 
-.floatleft {
+figure.floatleft {
 	max-width: 30%;
 	width: auto\9*0.3; /* ie8 */
 	height: auto;
 	float: left;
+	margin: 5px 0 20px 20px;
+	margin: 0.3125rem 0 1.25rem 1.25rem;
 }
 
 iframe, embed, object, video {

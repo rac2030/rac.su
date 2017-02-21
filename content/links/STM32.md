@@ -2,7 +2,7 @@
 description = "Using STM32 microcontroller"
 title = "STM32"
 draft = false
-thumbnail = ""
+thumbnail = "/img/logo/STM32.png"
 tags = []
 categories = ["links"]
 date = "2017-02-21T02:50:12+01:00"

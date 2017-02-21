@@ -3,7 +3,7 @@ description = "Links to usefull stuff for working with Hugo"
 title = "Hugo"
 thumbnail = ""
 tags = []
-categories = []
+categories = ["links"]
 date = "2017-02-19T23:47:16+01:00"
 draft = false
 +++
@@ -19,3 +19,8 @@ Some links I collected with information about how to use Hugo.
 * [Embedding Youtube videos in hugo with builtin shortcodes](https://gohugo.io/extras/shortcodes/#youtube)
 * [Creating own shortcodes with HTML and javascript snippets](https://gohugo.io/extras/shortcodes/#creating-your-own-shortcodes)
 * [Syntax highlighting in Hugo](https://gohugo.io/extras/highlighting/)
+
+# Themes to have a closer look
+This is mainly a list for myself ;-)
+
+* http://themes.gohugo.io/grid-side

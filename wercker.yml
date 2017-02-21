@@ -3,6 +3,9 @@ build:
   steps:
     - install-packages:
         packages: git
+    - script:
+        name: Set git config core.quotePath to false for emoji filenames
+        code: git config --global core.quotePath false
 # Build the HUGO page in public folder
     - arjen/hugo-build@1.14.1:
         version: "0.18.1"
@@ -12,7 +15,7 @@ build:
 deploy:
   steps:
     - install-packages:
-        packages: git ssh-client
+        packages: ssh-client
 # Deploy the public folder to gh_pages branch
     - lukevivier/gh-pages@0.2.1:
         token: $GIT_TOKEN

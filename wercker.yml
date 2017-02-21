@@ -15,7 +15,7 @@ build:
 deploy:
   steps:
     - install-packages:
-        packages: ssh-client
+        packages: git ssh-client
 # Deploy the public folder to gh_pages branch
     - lukevivier/gh-pages@0.2.1:
         token: $GIT_TOKEN

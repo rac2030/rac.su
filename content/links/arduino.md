@@ -5,7 +5,7 @@ date = "2017-02-21T01:30:24+01:00"
 description = "Various arduino links by topics"
 title = "Arduino"
 draft = false
-thumbnail = ""
+thumbnail = "http://www.arduino.org/images/arduino_official_Logo__.png"
 
 +++
 

@@ -10,7 +10,7 @@
 		{{- range $paginator.Pages }}
 		<article class="loop__item post clearfix">
 			{{- if .Params.thumbnail }}
-			<figure class="loop__thumbnail">
+			<figure class="loop__thumbnail" style="float: right;">
 				<a href="{{ .Permalink }}">
 					<img src="{{ .Params.thumbnail | absURL }}" alt="{{ .Title }}" />
 				</a>

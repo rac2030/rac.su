@@ -9,7 +9,7 @@ description = ""
 
 +++
 
-In order to display the last updated timestamp of a page, I had to set `EnableGitInfo` to `true` in the `config.toml` but this caused CI on wercker to fail as soon as I did a `git push`.
+In order to display the last updated timestamp of a page, I had to set [EnableGitInfo](https://gohugo.io/extras/gitinfo/) to `true` in the `config.toml` but this caused CI on wercker to fail as soon as I did a `git push`.
 
 <!--more-->
 

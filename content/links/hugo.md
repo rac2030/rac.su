@@ -1,7 +1,7 @@
 +++
 description = "Links to usefull stuff for working with Hugo"
 title = "Hugo"
-thumbnail = ""
+thumbnail = "/img/logo/hugo.png"
 tags = []
 categories = ["links"]
 date = "2017-02-19T23:47:16+01:00"

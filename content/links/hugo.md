@@ -8,7 +8,7 @@ date = "2017-02-19T23:47:16+01:00"
 draft = false
 +++
 
-Some links I collected with information about how to use Hugo. Articles about hugo on this site can be found under the [hugo](/tags/hugo) tag.
+Some links I collected with information about how to use Hugo. Articles about [hugo](https://gohugo.io) on this site can be found under the [hugo tag](/tags/hugo).
 
 <!--more-->
 

@@ -70,7 +70,7 @@ Fail #1 happened when we tested how well the SDP610 responds after mounting the 
 We used 2 different sensors from Sensirion as we wanted to try out both and used them on the same I2C bus (together with the SHT31) and did not want to fix the address clash.
 
 {{<figure src="day1-prototype-1tube.jpg" caption="Prototype with only 1 tube">}}
-After a long day of hacking and having fun chatting with other participants we could test out our first prototype, for that we took the bicyclye from another challenge and did some test drives outside as well as inside. The spikes you see in the picture are the pressure readings for both weels going over the tube.
+After a long day of hacking and having fun chatting with other participants we could test out our first prototype, for that we took the bicyclye from another challenge and did some test drives outside as well as inside. You can see how it looked like in the [video]({{< relref "#first-outdoor-trials-with-the-prototype" >}}) where you can also see that we struggled at the beginning with the tubes not tight enough on the sensor, this did lead to air leakage and wrong sensor readings. The spikes you see in the picture are the pressure readings for both weels going over the tube.
 {{<figure src="fieldtest-sensordata.jpg" caption="Short test outside the building looking at the sensor data">}}
 
 When the first tire compresses the tube, the air from inside will flow trough the sensor to the outside and when the wheel is gone the reverse will happen and the tube, which has one side closed and the other attached to the sensor, will suck in the air from outside. That explains why each wheel generates 2 spikes shortly after each other.
@@ -88,7 +88,7 @@ Afterwards, all except Gonzalo Casas who slept on the couch did go home, I conce
 
 ## Day 2 - Saturday, 4th February
 {{<figure class="floatright" src="day2-prototype-2tubes.jpg" caption="Prototype with 2 tubes for direction">}}
-On day 2 we mainly concentrated on getting the web gui finished together with some monkeys (see GUI in action [video]({{< relref "#videos" >}})) and combining the sensor readings. As always, time is running out so we havent combined all the sensors in the code but at least we have the individual pieces together and it detects when there is a bicycle rolling over (pattern). It will collect statistics data and send every 10 minutes a message over LoRaWAN with a timestamp and the count as well as data about the temperature.
+On day 2 we mainly concentrated on getting the web gui finished together with some monkeys (see GUI in action [video]({{< relref "#lorawan-data-receiver-web-gui-in-action" >}})) and combining the sensor readings. As always, time is running out so we havent combined all the sensors in the code but at least we have the individual pieces together and it detects when there is a bicycle rolling over (pattern). It will collect statistics data and send every 10 minutes a message over LoRaWAN with a timestamp and the count as well as data about the temperature.
 
 The reason we only send data every 10 minutes (during demo every 1 minute) is the available LoRa bandwith and the allowed air time per device of 15 seconds per day. We minimized the payload as much as possible but still the air time used will also be affected by the distance to the next hub which will pickup our signal and send the data to the MQTT of the TTN network.
 
@@ -98,11 +98,14 @@ The reason we only send data every 10 minutes (during demo every 1 minute) is th
 The Arduino and the NodeJS WebApplication is available on on GitHub @ 
 https://github.com/rac2030/MakeZurich/tree/master/MoBiFloC
 
-# Videos
-LoraWAN data receiver web GUI in action
+## Videos
+#### First outdoor trials with the prototype
+{{< youtube id="xxx" autoplay="false" >}}
+
+#### LoraWAN data receiver web GUI in action
 {{< youtube id="UFf2p6Vvhg4" autoplay="false" >}}
 
-Presentation on the second day at the end of the hackathon
+#### Presentation on the end of the hackathon
 {{< youtube id="oF1MmIcnQl0" autoplay="false" >}}
 
 ## Speaker deck of all challenges

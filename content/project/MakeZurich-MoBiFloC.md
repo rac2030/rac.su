@@ -1,6 +1,6 @@
 +++
 title = "MakeZurich - MoBiFloC"
-description = "A cheap and mobile bike commuter flow counter node to enhance the existing sensor network. This will also be helpful to quickly bring up nodes at the right place to evaluate new routes and how they are used."
+description = "A cheap and portable bike commuter flow counter node to enhance the existing sensor network. This will also be helpful to quickly bring up nodes at the right place to evaluate new routes and how they are used."
 tags = [
     "arduino",
     "hackathon",
@@ -16,7 +16,7 @@ thumbnail = "/project/MakeZurich-MoBiFloC/MakeZurich-logo.png"
 
 Project entry for the [MakeZurich](https://makezurich.ch) 2017 Hackathon.
 
-A cheap and mobile bike commuter flow counter node to enhance the existing sensor network. This will also be helpful to quickly bring up nodes at the right place to evaluate new routes and how they are used.
+A cheap and portable bike commuter flow counter node to enhance the existing sensor network. This will also be helpful to quickly bring up nodes at the right place to evaluate new routes and how they are used.
 
 <!--more-->
 
@@ -33,7 +33,7 @@ A cheap and mobile bike commuter flow counter node to enhance the existing senso
 ## Idea
 Challenge accepted... but on what should we focus?
 
-Create a measuring unit that is cheap (many deployements, vandalism) and can be deployed to where its needed without much efforts to enrich the [existing data](https://data.stadt-zuerich.ch/dataset/verkehrszaehlungen-werte-fussgaenger-velo). As transport media we wanted to use the existing [LoRaWAN infrastructure from TTN Zürich](https://www.thethingsnetwork.org/community/zurich/) as this was the main topic of this hackathon. After a week of research and tryouts in the [MechArtLab](http://www.mechatronicart.ch/mechartlab/) I picked up on the idea of using a pressure sensor for this (idea source is [TOMORROW LAB](http://www.tomorrow-lab.com/lab16.php)) and so the journey begins.
+Create a measuring unit that is cheap (many deployements, vandalism) and can be deployed to where its needed without much efforts to enrich the [existing data](https://data.stadt-zuerich.ch/dataset/verkehrszaehlungen-werte-fussgaenger-velo). As transport media we wanted to use the existing [LoRaWAN infrastructure from TTN Zürich](https://www.thethingsnetwork.org/community/zurich/) as this was the main topic of this hackathon. After a week of research and tryouts in the [MechArtLab](http://www.mechatronicart.ch/mechartlab/) I picked up on the idea of using a differential pressure sensor for this (idea source is [TOMORROW LAB](http://www.tomorrow-lab.com/lab16.php)) and so the journey begins.
 {{<figure class="floatright30" src="SHT31.jpg">}}
 
 We wanted to use 2 pressure sensors with one tube each, this will allow us to not only count but also determine the direction the bycicles passed the sensor. We have no clue how exactly we want to distinguish pedrestrians from bycicles but some ideas floating around was calculating the speed from the difference the two tubes get hit or the intensity of the pressure change. As we had a sonar sensor in the box, this could also have been used in some way and maybe combining the different sources we can find out the difference.
@@ -63,8 +63,8 @@ During the OpenLab week before, I already tested most of the sensors from the ki
 
 {{<figure class="floatright30" src="brainstorming.jpg">}}
 First we did some brainstorming of the ideas that are floating around and explained Robert (from Tiefbauamt Stadt Zürich) what we want to do.
-We started putting all the sensors and electronic pieces on the breadboard and wiring it that we can start thinkering on the software side.
-The work was divided that Tony will take care of the web application to visualize what we measure and I will thinker with the arduino code to send the data.
+We started putting all the sensors and electronic pieces on the breadboard and wiring it that we can start tinkering on the software side.
+The work was divided that Tony will take care of the web application to visualize what we measure and I will tinker with the arduino code to send the data.
 
 Fail #1 happened when we tested how well the SDP610 responds after mounting the first tube on a plate and connecting it... sadly the tube was not soft enough which meant that we need to get out and buy a new tube. Luckily a Jumbo was just around the corner and they had one with soft silicone, a bit bigger than the one we used and did fit on the sensor but we it did fit our old tube and we decided to cut a short piece from the old tube to make a connector between the sensor and the soft tube.
 We used 2 different sensors from Sensirion as we wanted to try out both and used them on the same I2C bus (together with the SHT31) and did not want to fix the address clash.

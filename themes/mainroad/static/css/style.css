@@ -811,6 +811,18 @@ figure.size30p {
 }
 
 figure.floatright {
+	float: right;
+	margin: 5px 0 20px 20px;
+	margin: 0.3125rem 0 1.25rem 1.25rem;
+}
+
+figure.floatleft {
+	float: left;
+	margin: 5px 0 20px 20px;
+	margin: 0.3125rem 0 1.25rem 1.25rem;
+}
+
+figure.floatright30 {
 	max-width: 30%;
 	width: auto\9*0.3; /* ie8 */
 	height: auto;
@@ -819,7 +831,7 @@ figure.floatright {
 	margin: 0.3125rem 0 1.25rem 1.25rem;
 }
 
-figure.floatleft {
+figure.floatleft30 {
 	max-width: 30%;
 	width: auto\9*0.3; /* ie8 */
 	height: auto;

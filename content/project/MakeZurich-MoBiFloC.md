@@ -100,7 +100,7 @@ https://github.com/rac2030/MakeZurich/tree/master/MoBiFloC
 
 ## Videos
 #### First outdoor trials with the prototype
-{{< youtube id="xxx" autoplay="false" >}}
+{{< youtube id="IlvafwAg5jA" autoplay="false" >}}
 
 #### LoraWAN data receiver web GUI in action
 {{< youtube id="UFf2p6Vvhg4" autoplay="false" >}}

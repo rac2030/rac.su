@@ -26,21 +26,21 @@ A cheap and portable bike commuter flow counter node to enhance the existing sen
 * An existing loop counter (see existing sensors above) costs CHF 5000 (sensor + installation).
 * Each loop counter actually consists of two loops in order to detect the direction of travel.
 * Sensors use SIM cards and work reliably (traffic via France for some reason–maybe French SIM card or so).
-* Robert responsible for slow traffic in Zürich is mainly interested in the development of bicycle usage. Is it increasing? To what extent?
-* Understanding the behavior of cyclists in different weather conditions is also interesting to see. E.g.: Is it worthwhile to plow bike lanes in winter?
-* From where do cyclists enter the city?
+* Robert Dorbritz, the responsible for slow traffic in Zürich, is mainly interested how bicycle usage develops over time. I.e. is it increasing? To what extent?
+* Understanding the behavior of cyclists in different weather conditions is also an interesting aspect. E.g.: Is it worthwhile to plow the snow away from bike lanes in winter, given that the number of cyclist is very low?
+* Where is the largest influx of cyclists entering the city?
 
 ## Idea
 Challenge accepted... but on what should we focus?
 
-Create a measuring unit that is cheap (many deployments, vandalism) and can be deployed to where its needed without much efforts to enrich the [existing data](https://data.stadt-zuerich.ch/dataset/verkehrszaehlungen-werte-fussgaenger-velo). As transport media we wanted to use the existing [LoRaWAN infrastructure from TTN Zürich](https://www.thethingsnetwork.org/community/zurich/) as this was the main topic of this hackathon. After a week of research and tryouts in the [MechArtLab](http://www.mechatronicart.ch/mechartlab/) I picked up on the idea of using a differential pressure sensor for this (idea source is [TOMORROW LAB](http://www.tomorrow-lab.com/lab16.php)) and so the journey begins.
+Create a measuring unit that is cheap (due to requiring numerous deployments, vandalism against the sensors) and can be deployed to where its needed without much efforts to enrich the [existing data](https://data.stadt-zuerich.ch/dataset/verkehrszaehlungen-werte-fussgaenger-velo). As for the communication technology we wanted to use the existing [LoRaWAN infrastructure from TTN Zürich](https://www.thethingsnetwork.org/community/zurich/) because it was the main topic of this hackathon. After a week of research and tryouts in the [MechArtLab](http://www.mechatronicart.ch/mechartlab/) I picked up on the idea of using a differential pressure sensor for this (idea source is [TOMORROW LAB](http://www.tomorrow-lab.com/lab16.php)) and so the journey begins.
 {{<figure class="floatright30" src="SHT31.jpg">}}
 
-We wanted to use 2 pressure sensors with one tube each, this will allow us to not only count but also determine the direction the bicycles passed the sensor. We have no clue how exactly we want to distinguish pedestrians from bicycles but some ideas floating around was calculating the speed from the difference the two tubes get hit or the intensity of the pressure change. As we had a sonar sensor in the box, this could also have been used in some way and maybe combining the different sources we can find out the difference.
+We wanted to use 2 differential pressure sensors with one tube each, which would allow us not only to count but also determine the direction of the bicycles passing over the sensor. We have no clue how exactly we want to distinguish pedestrians from bicycles but some ideas floating around was calculating the difference in speed between the two tubes being stepped on or the intensity of the pressure change. As we had a sonar sensor in the box, this could also have been used in some way and maybe combining the different sources we can find out the difference.
 
-Further we wanted to get current temperature and humidity from that place (to enrich environmental data collection) using the SHT31 we got as sample from Sensirion. Given we did not had any 4-Pin flex PCB adapters on hand, some tinkering was involved as you can see in the picture having some fun with soldering tiny wires and fixing it with hot glue that it doesn't break the PCB.
+In order to enrich environmental data collection, we wanted to get current temperature and humidity from that place using the SHT31 we got as sample from Sensirion. Given that we did not had any 4-Pin flex PCB adapters on hand, some tinkering was involved - as you can see in the picture - having some fun with soldering tiny wires and fixing with hot glue such that it doesn't break the PCB.
 
-As a bonus and as we had the uBlox GPS on hand, we wanted that the measuring unit will have a button for initializing it after it has been placed, it would then transmit the current GPS position for the data that gets logged from this device. To save the bandwidth, we don't need the position all the time but if the sensor gets relocated, the initialization mode would save the hassle of manually entering the location and maybe messing up data if many nodes are deployed.
+As a bonus and as we had the uBlox GPS on hand, we considered having a button on the measuring unit for initializing it after it has been placed. It would then transmit the current GPS position for the data that gets logged from this device. The benefit of an automated procedure for the operator is not to have to manually enter GPS data into some tool; also it prevents human error. To save the bandwidth the initialization procedure would only be required when the sensor gets relocated.
 
 ## Used Hardware
 From the [MakeZurich kit](https://makezurich.ch/box/3/), we used:
@@ -63,7 +63,7 @@ During the OpenLab week before, I already tested most of the sensors from the ki
 
 {{<figure class="floatright30" src="brainstorming.jpg">}}
 First we did some brainstorming of the ideas that are floating around and explained Robert (from Tiefbauamt Stadt Zürich) what we want to do.
-We started putting all the sensors and electronic pieces on the breadboard and wiring it that we can start tinkering on the software side.
+We started connecting all the sensors and electronic pieces on the breadboard along with wiring it such that we can start tinkering on the software side.
 The work was divided that Tony will take care of the web application to visualize what we measure and I will tinker with the Arduino code to send the data.
 
 Fail #1 happened when we tested how well the SDP610 responds after mounting the first tube on a plate and connecting it... sadly the tube was not soft enough which meant that we need to get out and buy a new tube. Luckily a Jumbo was just around the corner and they had one with soft silicone, a bit bigger than the one we used and did fit on the sensor but we it did fit our old tube and we decided to cut a short piece from the old tube to make a connector between the sensor and the soft tube.

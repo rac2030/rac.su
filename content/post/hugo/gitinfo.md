@@ -15,11 +15,11 @@ In order to display the last updated timestamp of a page, I had to set [EnableGi
 
 ![Wercker build failing after git push](01-wercker-fail.png)
 
-After some analysis, I found the root cause was with unicode filenames which I used for some easter eggs in this page failing when gitinfo.go tries to fetch info for every file it encounters. I filed this on [hugo-3071](https://github.com/spf13/hugo/issues/3071). If you navigate to  http://rac.su/💩 you will see one of the easter eggs and this uses a emoji for the path. While git itself had no troubles working with this, it did add it to the repository as `content/\360\237\222\251.md` and this then caused the failing on getting the meta data in `gitinfo.go`.
+After some analysis, I found the root cause was with Unicode filenames which I used for some easter eggs in this page failing when gitinfo.go tries to fetch info for every file it encounters. I filed this on [hugo-3071](https://github.com/spf13/hugo/issues/3071). If you navigate to  http://rac.su/💩 you will see one of the easter eggs and this uses a emoji for the path. While git itself had no troubles working with this, it did add it to the repository as `content/\360\237\222\251.md` and this then caused the failing on getting the meta data in `gitinfo.go`.
 
 # Solution
 
-The solution was suggested by [bep](https://github.com/bep) and was to set the git option `core.quotePath` to false in order that it does not quote the unicode filenames.
+The solution was suggested by [bep](https://github.com/bep) and was to set the git option `core.quotePath` to false in order that it does not quote the Unicode filenames.
 
 This worked on my local system (OSX) as well as on the [Debian](https://www.debian.org) [wercker](https://wercker.com) box, the `wercker.yml` now looks like:
 {{< highlight yaml "style=emacs" >}}

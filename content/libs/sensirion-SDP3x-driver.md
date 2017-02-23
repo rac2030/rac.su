@@ -1,6 +1,6 @@
 +++
 title = "Sensirion SDP3x Arduino driver"
-description = "tbw."
+description = "Small Arduino library to read data from a SDP3 family differential pressure sensor"
 tags = [
     "arduino",
     "sensor"
@@ -13,12 +13,12 @@ categories = [
 draft=false
 +++
 
-This Arduino library can be used to interface the [SDP3x](https://www.sensirion.com/products/differential-pressure-sensors/worlds-smallest-differential-pressure-sensor/) differential pressure sensor from [Sensirion](https://www.sensirion.com) over I2C to get the pressure difference and the temparature reading it exposes.
+This Arduino library can be used to interface the [SDP3x](https://www.sensirion.com/products/differential-pressure-sensors/worlds-smallest-differential-pressure-sensor/) differential pressure sensor from [Sensirion](https://www.sensirion.com) over I2C to get the pressure difference and the temperature reading it exposes.
 
 <!--more-->
 
 # Installation
-For now clone the [github repository](https://github.com/rac2030/Arduino-Sensirion-SDP3x-driver) or download and unpackt a [Zipped version](https://github.com/rac2030/Arduino-Sensirion-SDP3x-driver/archive/master.zip) into the libraries folder of your Arduino IDE.
+For now clone the [github repository](https://github.com/rac2030/Arduino-Sensirion-SDP3x-driver) or download and unpack a [Zipped version](https://github.com/rac2030/Arduino-Sensirion-SDP3x-driver/archive/master.zip) into the libraries folder of your Arduino IDE.
 {{< highlight bash "style=emacs" >}}
 git clone https://github.com/rac2030/Arduino-Sensirion-SDP3x-driver.git
 {{< /highlight >}}

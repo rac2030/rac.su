@@ -25,7 +25,7 @@ thumbnail = "/img/logo/arduino.png"
 
 # Audio
 ## Speech synthesis
-* [TTS arduino library](https://github.com/jscrane/TTS)
+* [TTS Arduino library](https://github.com/jscrane/TTS)
 * [Talkie](https://github.com/going-digital/Talkie) - Speech library for Arduino
 
 # Power
@@ -36,7 +36,7 @@ thumbnail = "/img/logo/arduino.png"
 * [Using MOSFETS with TTL levels](https://arduinodiy.wordpress.com/2012/05/02/using-mosfets-with-ttl-levels/)
 
 # LED Strips
-* [Wemos led strip arduino sketch example](https://5p.io/building-a-wifi-controlled-led-strip-controller/)
+* [Wemos led strip Arduino sketch example](https://5p.io/building-a-wifi-controlled-led-strip-controller/)
 * [ESP8266 RGB Strip control](http://www.esp8266color.com/hardware/)
 * Thread about [reducing PWM noise](http://electronics.stackexchange.com/questions/69851/reducing-led-pwm-noise-which-is-the-best-option)
 * [RGB Led Strip controlled by an Arduino](http://www.jerome-bernard.com/blog/2013/01/12/rgb-led-strip-controlled-by-an-arduino/)

@@ -3,7 +3,7 @@ thumbnail = ""
 tags = []
 categories = ["links"]
 date = "2017-02-21T01:51:07+01:00"
-description = "Stuff around processing videos from my el cheapo fisheye actioncam"
+description = "Stuff around processing videos from my el cheapo fish-eye action-cam"
 title = "360° Video processing"
 draft = false
 

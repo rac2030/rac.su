@@ -12,11 +12,11 @@ Some links I collected with information about how to use Hugo. Articles about [h
 
 <!--more-->
 
-* [Markdown cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+* [Markdown cheat-sheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 * [Creating Menu items](https://gohugo.io/extras/menus/)
 * [Using logic operators in list templates](https://discuss.gohugo.io/t/range-statement-where-clause-with-or-logic-operator/1385)
 * [Single content templates](https://gohugo.io/templates/content/)
-* [Embedding Youtube videos in hugo with builtin shortcodes](https://gohugo.io/extras/shortcodes/#youtube)
+* [Embedding Youtube videos in hugo with built-in shortcodes](https://gohugo.io/extras/shortcodes/#youtube)
 * [Creating own shortcodes with HTML and javascript snippets](https://gohugo.io/extras/shortcodes/#creating-your-own-shortcodes)
 * [Syntax highlighting in Hugo](https://gohugo.io/extras/highlighting/)
 

@@ -28,3 +28,17 @@ $ git submodule update
 Doing it for all existing submodules
 {{< highlight bash "style=emacs" >}}$ git submodule foreach git pull{{< /highlight >}}
 Doing it for only a specific submodule is standard git usage, you have to go to the root directory of the submodule and execute git pull or any other operation (including committing and pushing).
+
+# Forking
+## Adding upstream to your fork
+{{< highlight bash "style=emacs" >}}
+$ git checkout master
+$ git remote add upstream <insert.repo.uri>
+$ git fetch upstream
+$ git rebase upstream/master
+{{< /highlight >}}
+
+# Hosting git repositories
+Here are some projects which help you to self host your environment
+
+* https://try.gitea.io/

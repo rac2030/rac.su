@@ -29,12 +29,12 @@ This are all the steps needed to deploy your static [Hugo](/tags/hugo) page on [
 8. Choose No in the question if it is a single-page app
 10. Create a `deploy.sh` file with the following content and make it executable `chmod +x deploy.sh`:
 
-<code>
+{{< highlight bash "style=emacs" >}}
 #!/bin/sh
 rm -rf public
 hugo
 firebase deploy
-<code>
+{{< /highlight >}}
 
 9. Commit those files into your repository
 10. Deploy you page using `./deploy.sh`

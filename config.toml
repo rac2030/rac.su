@@ -8,6 +8,7 @@ googleAnalytics = "UA-92066434-1" # Enable Google Analytics by entering your tra
 EnableGitInfo = true 
 # For this to work with the unicode filenames in the path, following git config needs to be set
 # git config --global core.quotePath false
+enableRobotsTXT = true
 
 [Author]
     name = "Michel Racic"

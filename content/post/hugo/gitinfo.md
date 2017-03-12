@@ -5,7 +5,7 @@ thumbnail = ""
 tags = ["hugo"]
 categories = ["howto"]
 date = "2017-02-21T18:14:01+01:00"
-description = ""
+description = "Display GIT metadata in Hugo"
 
 +++
 

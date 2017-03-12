@@ -157,3 +157,8 @@ After looking at different implementations on how to best register the Service W
 To see the results, you can go to https://robinson-schule.ch, then disable networking (e.g. in chrome dev tools marking Offline, or really disable your wifi / enable airplane mode) and reload the page or even better close it and enter the address again and you will still have access to the page unless you're using an Apple iOS based mobile device or Safari or InternetExplorer (only Edge supports it).
 
 You can find more information on how to get started with PWA on the [Google developers PWA](https://developers.google.com/web/progressive-web-apps/) page.
+
+# Other resources
+* [An experiment in mixing Hugo and Polymer PRPL into a progressive web app blog](https://github.com/justinribeiro/blog-pwa)
+* [Go offline! Service Worker and Hugo](https://gohugohq.com/howto/go-offline-with-service-worker/)
+

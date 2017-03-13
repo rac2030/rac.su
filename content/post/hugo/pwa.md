@@ -161,4 +161,5 @@ You can find more information on how to get started with PWA on the [Google deve
 # Other resources
 * [An experiment in mixing Hugo and Polymer PRPL into a progressive web app blog](https://github.com/justinribeiro/blog-pwa)
 * [Go offline! Service Worker and Hugo](https://gohugohq.com/howto/go-offline-with-service-worker/)
+* [sw-precache library](https://github.com/GoogleChrome/sw-precache)
 

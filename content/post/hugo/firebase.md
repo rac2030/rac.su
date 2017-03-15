@@ -37,7 +37,7 @@ firebase deploy
 {{< /highlight >}}
 
 9. Commit those files into your repository
-10. Deploy you page using `./deploy.sh`
+10. Deploy your page using `./deploy.sh`
 
 
 ## Map a custom domain to a Firebase project
@@ -46,4 +46,7 @@ firebase deploy
 # Gitlab.com
 
 ## Configure CI runner
+1. Get a deploy token for your Firebase project executing ```firebase login:ci```which will bring up a browser with the authentication dialog and afterwards gives you a token to be used in CI
+2. In your GitLab project, go to Pipelines > Environments and then add a new environment called Production
+
 //TODO

@@ -17,7 +17,7 @@ This are all the steps needed to deploy your static [Hugo](/tags/hugo) page on [
 
 # Firebase
 
-## Create a Firebase project
+## Setup
 1. Go to https://console.firebase.google.com and create a new project (unless you already have a project and this is just an additional component to it). 
 2. Install `firebase-tools` (node.js) using: `npm install -g firebase-tools`
 3. Login to firebase (setup on your local machine) using `firebase login` which opens a browser and you can select your account. Use `firebase logout` in case you are already logged in but to the wrong account.
@@ -27,7 +27,11 @@ This are all the steps needed to deploy your static [Hugo](/tags/hugo) page on [
 6. Accept the default for database rules file
 7. Accept the default for the publish directory which is `public`
 8. Choose No in the question if it is a single-page app
-10. Create a `deploy.sh` file with the following content and make it executable `chmod +x deploy.sh`:
+
+## Deploy
+Simply execute `hugo && firebase deploy` and your site will be up in no time.
+
+Alternatively Create a `deploy.sh` file with the following content and make it executable `chmod +x deploy.sh`:
 
 {{< highlight bash "style=emacs" >}}
 #!/bin/sh
@@ -39,6 +43,14 @@ firebase deploy
 9. Commit those files into your repository
 10. Deploy your page using `./deploy.sh`
 
+## CI Setup
+1. Generate a deploy token using `firebase login:ci`
+2. Setup your CI
+3. Add the token to a private variable like `$FIREBASE_DEPLOY_TOKEN`
+{{% note %}}
+This is a private secret and it should not appear in a public repository. Make sure you understand you chosen CI and that it's not visible to others.
+{{% /note %}}
+4. Add a step in your build to do `firebase deploy --token $FIREBASE_DEPLOY_TOKEN`
 
 ## Map a custom domain to a Firebase project
 //TODO
@@ -50,3 +62,6 @@ firebase deploy
 2. In your GitLab project, go to Pipelines > Environments and then add a new environment called Production
 
 //TODO
+
+## Reference links
+* [Firebase CLI Reference](https://firebase.google.com/docs/cli/#administrative_commands)

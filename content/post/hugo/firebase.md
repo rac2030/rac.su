@@ -40,16 +40,13 @@ hugo
 firebase deploy
 {{< /highlight >}}
 
-9. Commit those files into your repository
-10. Deploy your page using `./deploy.sh`
-
 ## CI Setup
 1. Generate a deploy token using `firebase login:ci`
 2. Setup your CI
 3. Add the token to a private variable like `$FIREBASE_DEPLOY_TOKEN`
-{{% note %}}
-This is a private secret and it should not appear in a public repository. Make sure you understand you chosen CI and that it's not visible to others.
-{{% /note %}}
+
+> This is a private secret and it should not appear in a public repository. Make sure you understand you chosen CI and that it's not visible to others.
+
 4. Add a step in your build to do `firebase deploy --token $FIREBASE_DEPLOY_TOKEN`
 
 ## Map a custom domain to a Firebase project

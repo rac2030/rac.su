@@ -6,7 +6,7 @@
 			<h1 class="page-header__title">{{ .Title }}</h1>
 		</header>
 		{{- end }}
-		{{- $paginator := .Paginate ( where .Data.Pages "Section" "in" (slice "post" "libs" "project")) }}
+		{{- $paginator := .Paginate ( where .Data.Pages "Section" "in" (slice "post" "libs" "project" "dev" "hugo" "electronics" )) }}
 		{{- range $paginator.Pages }}
 		<article class="loop__item post clearfix">
 			{{- if .Params.thumbnail }}

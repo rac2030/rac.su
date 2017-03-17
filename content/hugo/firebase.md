@@ -10,6 +10,7 @@ description = "Howto host you Hugo site on firebase using gitlab for source and 
 title = "Hosting a Hugo site with firebase"
 draft = false
 thumbnail = "/img/logo/firebase.png"
+aliases = ["/post/hugo/firebase"]
 
 +++
 This are all the steps needed to deploy your static [Hugo](/tags/hugo) page on [Firebase](/tags/firebase) for free (until you exceed the traffic of the free tier a.k.a Spark plan).

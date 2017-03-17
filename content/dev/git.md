@@ -9,6 +9,7 @@ tags = [
 	"SCM",
 	"GIT"
 ]
+aliases = ["/post/dev/git"]
 +++
 Some GIT commands I use and wanted to note for my own reference in case I don't use it anymore for some time and can't remember ;-)
 

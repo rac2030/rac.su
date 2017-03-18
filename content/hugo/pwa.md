@@ -4,7 +4,7 @@ date = "2017-03-12T17:35:53+01:00"
 description = ""
 title = "Enabling offline usage of a Hugo site (PWA)"
 draft = false
-thumbnail = "/post/hugo/pwa/offline-dino.jpg"
+thumbnail = "/hugo/pwa/offline-dino.jpg"
 tags = ["hugo", "PWA", "ServiceWorker"]
 aliases = ["/post/hugo/pwa"]
 

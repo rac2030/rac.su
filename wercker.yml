@@ -2,7 +2,7 @@ box: debian
 build:
   steps:
     - install-packages:
-        packages: git
+        packages: git python3-pygments
     - script:
         name: Set git config core.quotePath to false for emoji filenames
         code: git config --global core.quotePath false

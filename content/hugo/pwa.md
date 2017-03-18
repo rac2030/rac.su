@@ -7,7 +7,6 @@ draft = false
 thumbnail = "/hugo/pwa/offline-dino.jpg"
 tags = ["hugo", "PWA", "ServiceWorker"]
 aliases = ["/post/hugo/pwa"]
-
 +++
 
 PWA (Progressive Web Apps) are pretty cool for certain use cases like users having flaky connections (e.g. from mobiles) or just to reduce the initial loading time (after the first visit to the page). I document my exercise adding offline capability to a small single page site with no frequent updates that I built with Hugo and the Dimension theme.

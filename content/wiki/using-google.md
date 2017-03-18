@@ -56,7 +56,7 @@ no comments...
 
 * filetype:inc mysql_connect OR mysql_pconnect
 
-Frontpage 
+# Frontpage 
 * inurl:_vti_pvt "service.pwd"
 
 # PHP PHOTO ALBUMS

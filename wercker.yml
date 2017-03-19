@@ -2,17 +2,13 @@ box: debian
 build:
   steps:
     - install-packages:
-        packages: git python3-pygments
+        packages: git
     - script:
         name: Set git config core.quotePath to false for emoji filenames
         code: git config --global core.quotePath false
-    - script:
-        name: Install pygments with pip
-        code: pip install Pygments
 # Build the HUGO page in public folder
-    - arjen/hugo-build@1.14.1:
+    - arjen/hugo-build:
         version: "0.18.1"
-        theme: mainroad
         flags: --buildDrafts=false
 
 deploy:

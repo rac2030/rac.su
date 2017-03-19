@@ -10,9 +10,6 @@ build:
     - arjen/hugo-build:
         version: "0.18.1"
         flags: --buildDrafts=false
-    - script:
-        name: python test
-        code: python --version
 
 deploy:
   steps:

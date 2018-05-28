@@ -10,8 +10,10 @@ build:
         name: cleanup
         code: rm -rf public/
 # Build the HUGO page in public folder
-    - arjen/hugo-build@1.14.1:
-        version: "0.18.1"
+#    - arjen/hugo-build@1.14.1:
+#        version: "0.18.1"
+    - arjen/hugo-build:
+        version: "0.41"
         flags: --buildDrafts=false
 
 deploy:

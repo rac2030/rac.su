@@ -28,10 +28,24 @@ All headers have a shifted look, this was intended and is a tryout from an old s
 {{< figure src="pinout-diagram.png" link="https://github.com/rac2030/breakout-boards/raw/master/ublox_NINA-W102/pinout/pinout-diagram.pdf" target="_blank" attr="Made by gnz.io" attrlink="http://gnz.io">}}
 
 ## Schematics
-TBW.
+{{< figure src="NINA-W102_minimal_breakout_schematic_rev.0.5.png" link="https://github.com/rac2030/breakout-boards/raw/master/ublox_NINA-W102/NINA-W102_minimal_breakout-rev.0.5.pdf" target="_blank">}}
 
 ## PCB Layout
-TBW.
+{{< figure src="NINA-W102_minimal_breakout_pcb-layout_rev.0.5.png" >}}
+
+## BOM
+Ref     | Qty   | Value     | Digikey       | Price
+--------|-------|-----------|---------------|------------
+C1, C2  | 2     | 100nF     | 732-8086-1-ND | CHF 0.0871
+C3, C4  | 2     | 1uF       | 732-7692-1-ND | CHF 0.1177
+D1      | 1     | GREEN LED | 732-5032-1-ND | CHF 0.1558
+J1, J2  | 2     | Conn_01x15| WM50014-15-ND | CHF 0.34636
+R1      | 1     | 1kΩ       | 541-1.0KECT-ND| CHF 0.0254
+R2, R3  | 2     | 10kΩ      | 541-4201-1-ND | CHF 0.0147
+SW1, SW2| 2     | Button    | EG2663TR-ND   | CHF 0.27930
+U1      | 1     | NINA-W102 | 672-1070-1-ND | CHF 8.- ~ CHF 20.-
+> Note: The price for the NINA module is based on the ublox onlineshop and depends on how many units.
+
 
 ## Making of
 TBW.

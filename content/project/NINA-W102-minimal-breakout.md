@@ -14,9 +14,27 @@ draft = false
 While working on the [badge design for MakeZurich 2018](/project/makezurich-18-badge), I had the need to first make a breakout for the NINA-W102 we got from [ublox](https://www.u-blox.com) to see what is possible, do some tryouts with different components like the display and start developing drivers and firmware we need for it. This is the outcome of it and as we did go on with the badge design, we switched from having a single-board badge to a modular badge where the modules can be reused standalone in a project. Hence on the final badge design you can reuse the display and the NINA-W102 module in your hacks and with a little bit of desoldering you can reuse the sensor module (which we got from [Sensirion](https://www.sensirion.com)) as well.
 <!--more-->
 
+This is really a minimal developement board and it has no LDO on board which means you need to power it with 3v3 either trough the serial programmer header, Which is matching a standard FTDI adapter and can be used solderless, or VCC.
+
+VCC_IO is by default bridged which means that IO Pins work with 3v3 as well but if needed the jumper can be cut and a different voltage supplied which will be used for the IO levels.
+
+Its has a reset and a boot button, connected to the corresponding pins of the Nina which allow to programm it, the auto programmer circuit with crossing transistors has not been implemented after a hint from ublox that this gave some issues but I will try that in a future revision to see if I can get it somehow working.
+
+The power LED is connected directly to VCC and can be safely left unpopulated or changed together with R1 and is only there as I wanted to have some indication if there is any powersource attached. The pcb layout is single sided and the components have size 1206 with extra long pads for easy handsoldering. 
+
+All headers have a shifted look, this was intended and is a tryout from an old sparkfun article. This allows for centering and holding the header for easy soldering without doing the breadboard trick and still get straight headers on it. In case of the FTDI header, this allows me to not have to solder any header on it but just plug the programmer in and out whenever I need to, in certain cases it can be that it is not enough contact and you have to slightly push it against the wall but in my trials it worked out good enough and is my favorite programming mode.
 
 ## Pinout
 {{< figure src="pinout-diagram.png" link="https://github.com/rac2030/breakout-boards/raw/master/ublox_NINA-W102/pinout/pinout-diagram.pdf" target="_blank" attr="Made by gnz.io" attrlink="http://gnz.io">}}
+
+## Schematics
+TBW.
+
+## PCB Layout
+TBW.
+
+## Making of
+TBW.
 
 ## Sources
 KiCAD schematic and PCB design sources are available on my github at https://github.com/rac2030/breakout-boards/tree/master/ublox_NINA-W102

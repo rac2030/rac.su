@@ -11,7 +11,7 @@ categories = [
     "Arduino"
 ]
 draft = false
-thumbnail = "/project/MakeZurich-MoBiFloC/MakeZurich-logo.png"
+thumbnail = "/project/makezurich-mobifloc/MakeZurich-logo.png"
 +++
 
 Project entry for the [MakeZurich](https://makezurich.ch) 2017 Hackathon.

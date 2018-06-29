@@ -48,7 +48,7 @@ U1      | 1     | NINA-W102 | 672-1070-1-ND | CHF 8.- ~ CHF 20.-
 
 
 ## Making of
-TBW.
+TBW. but was a fun journey with lots of last minute fixes and deliveries ;-)
 
 ## Sources
 KiCAD schematic and PCB design sources are available on my github at https://github.com/rac2030/breakout-boards/tree/master/ublox_NINA-W102

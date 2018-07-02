@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MakeZurich 2018 Badge</title>
+<meta name="description" content="Just a space where I write down stuff for my own reuse...">
+<meta name="generator" content="Hugo 0.41" />
+<meta property="og:title" content="MakeZurich 2018 Badge" />
+<meta property="og:description" content="You received your MakeZurich vol. II participants badge and want to know more about it?
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="//rac.su/project/makezurich-18-badge/" />
+
+
+
+<meta property="article:published_time" content="2018-05-27T00:00:00&#43;00:00"/>
+
+<meta property="article:modified_time" content="2018-06-29T02:54:55&#43;02:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+<link rel="stylesheet" href="//rac.su/css/style.css" type="text/css" media="all" />
+<script type="text/javascript" src="//rac.su/js/scripts.js"></script>
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="//rac.su/" title="RAC&#39;s notepad" rel="home">
+						<h1 class="logo__title">RAC&#39;s notepad</h1>
+						<h2 class="logo__tagline">Just some braindumps</h2>
+					</a>
+				</div>
+			</div>
+			<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item "><a class="menu__link" href="/project/">PROJECTS</a></li>
+		<li class="menu__item "><a class="menu__link" href="/libs/">LIBRARIES</a></li>
+		<li class="menu__item "><a class="menu__link" href="/socialstream/">SOCIAL STREAM</a></li>
+		<li class="menu__item "><a class="menu__link" href="/links/">BOOKMARKS</a></li>
+	</ul>
+</nav>
+		</header>
+		<div class="wrapper clearfix">
+
+<div class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		<header class="post__header clearfix">
+			<h1 class="post__title">MakeZurich 2018 Badge</h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="post__meta-date" datetime="2018-05-27 00:00:00 &#43;0000 UTC">May 27, 2018</time>
+				
+					(<time class="post__meta-date" datetime="2018-06-29 02:54:55 &#43;0200 &#43;0200">Last modified on June 29, 2018</time>)
+					
+			</p>
+		</header>
+		
+		    <div id="toc" class="well col-md-4 col-sm-6" style="float: right;padding: 0.01em 10px;border-radius: 10px 0px 0px 10px;-moz-border-radius: 10px 0px 0px 10px;-webkit-border-radius: 10px 0px 0px 10px;border: 2px dotted #0040ff;">
+		    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#main-functionality">Main functionality</a>
+<ul>
+<li>
+<ul>
+<li><a href="#name-view">Name view</a></li>
+<li><a href="#qr-initialisation-view">QR Initialisation view</a></li>
+<li><a href="#sensor-view">Sensor view</a></li>
+<li><a href="#e-t-calling-home">E.T. calling home</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#at-commands">AT commands</a>
+<ul>
+<li><a href="#at-command-list">AT command list</a></li>
+</ul></li>
+<li><a href="#your-turn">Your turn</a>
+<ul>
+<li>
+<ul>
+<li><a href="#buttons">Buttons</a></li>
+<li><a href="#e-paper-display">E-Paper display</a></li>
+<li><a href="#leds">LEDs</a></li>
+<li><a href="#sensor-module">Sensor module</a></li>
+<li><a href="#i2c-devices">I2C devices</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#pinout">Pinout</a></li>
+<li><a href="#schematics">Schematics</a></li>
+<li><a href="#pcb-layout">PCB Layout</a></li>
+<li><a href="#bom">BOM</a></li>
+<li><a href="#making-of">Making of</a></li>
+<li><a href="#sources">Sources</a></li>
+<li><a href="#team-contributions">Team contributions</a></li>
+</ul></li>
+</ul>
+</nav>
+		    </div>
+		
+		<div class="post__content clearfix">
+			<figure class="post__thumbnail">
+				<img src="//rac.su/project/makezurich-18-badge/messydesk.jpg" alt="MakeZurich 2018 Badge">
+			</figure>
+			<p>You received your <a href="https://makezurich.ch">MakeZurich vol. II</a> participants badge and want to know more about it?</p>
+
+<p></p>
+
+<p>For now, documentation is pretty rare as we worked day and night to get you the badge assembled and the firmware up and running just in time.
+You can tell the orga team is running a JIT compiler as the night before the hackathon, the badges where finished with assembly and the firmware got flashed.</p>
+
+<h2 id="main-functionality">Main functionality</h2>
+
+<p>As a badge should do what a badge needs to do, it will display your name in the first place.
+And don&rsquo;t worry if you run out of battery, as we used a E-Paper display, the last screen will stay and that means you could connect a serial programmer or just 3.3V to it, wait until its on the name view and then just cut the power and we will still see who you are.</p>
+
+
+<figure>
+    
+        <img src="/project/makezurich-18-badge/nameView.jpg" />
+    
+    
+</figure>
+
+
+<h4 id="name-view">Name view</h4>
+
+<p>This is the standard view which gets loaded once your Name has been registered and it did connect to the Kraftwerk wifi to fetch the details from the server.</p>
+
+<h4 id="qr-initialisation-view">QR Initialisation view</h4>
+
+<p>
+<figure class="floatright30">
+    
+        <img src="/project/makezurich-18-badge/qrView.jpg" />
+    
+    
+</figure>
+
+When the badge is not yet registered, this view will be shown until it fetches a name from the server. If you want or need to display this QR code again, you can press SW1 (button on the lower left) to get to this view again.</p>
+
+<p>Whenever you go to that view, it will startup wifi, connect to Kraftwerk and fetch the name from the server and update it. If you want another name to be displayed, please speak to one of the organizers and they can set you a new name.</p>
+
+<h4 id="sensor-view">Sensor view</h4>
+
+<p>
+<figure class="floatright30">
+    
+        <img src="/project/makezurich-18-badge/sensorView.jpg" />
+    
+    
+</figure>
+
+The sensor module has an SHTC3 Temperature and Humidity sensor as well as an SGPC3 Gas sensor sponsored from <a href="https://www.sensirion.com">Sensirion</a> on board. This view will display the current data and refreshes itself every 5 seconds.</p>
+
+<h4 id="e-t-calling-home">E.T. calling home</h4>
+
+<p>Yes we collect some data, specifically we send back the current sensor readings every 30 minutes to our server for an experiment. If you want to know what data is exactly sent, connect a serial programmer (you can get one from an organizer if you don&rsquo;t have one) and see the output. Payload is being dumped as well as the responses.</p>
+
+<h2 id="at-commands">AT commands</h2>
+
+<blockquote>
+<p>You got your badge with firmware v.1.0.0 which does not have those commands as they got introduced in v.1.0.1
+Download <a href="https://github.com/rac2030/IoT-conference-badge/blob/firmware/firmware/hackathon-kraftwerk/deploy/hackathon-kraftwerk-firmware-v.1.0.1.zip">this</a> zip file, unpack it and take a look at the README which gives you the command you can use with the esptool to flash it.</p>
+</blockquote>
+
+<p>Open Serial Monitor, change to <code>Both LN &amp; CR</code> and <code>115200 baud</code></p>
+
+<p>Now you just have to write the commands and see how it works. It&rsquo;s very simple.</p>
+
+<ul>
+<li>Type <code>AT</code> if will be return <code>OK</code><br /></li>
+</ul>
+
+<h3 id="at-command-list">AT command list</h3>
+
+<table>
+<thead>
+<tr>
+<th>AT command</th>
+<th>Description</th>
+<th>return</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>AT</code></td>
+<td>Check status comunication.</td>
+<td><code>OK</code></td>
+</tr>
+
+<tr>
+<td><code>AT+RESET</code></td>
+<td>Restart Arduino.</td>
+<td><code>OK</code></td>
+</tr>
+
+<tr>
+<td><code>AT+CCLK</code></td>
+<td>Get time in milliseconds after Arduino start.</td>
+<td>value</td>
+</tr>
+
+<tr>
+<td><code>ATDOH+&lt;PIN&gt;</code></td>
+<td>Set pin to HIGH.</td>
+<td><code>OK</code></td>
+</tr>
+
+<tr>
+<td><code>ATDOL+&lt;PIN&gt;</code></td>
+<td>Set pin to LOW.</td>
+<td><code>OK</code></td>
+</tr>
+
+<tr>
+<td><code>ATDIN+&lt;PIN&gt;</code></td>
+<td>Read pin digital input.</td>
+<td>value</td>
+</tr>
+
+<tr>
+<td><code>ATDIP+&lt;PIN&gt;</code></td>
+<td>Read pin digital input with internal pull up resistor.</td>
+<td>value</td>
+</tr>
+
+<tr>
+<td><code>ATAI+&lt;PIN&gt;</code></td>
+<td>Read analog input.</td>
+<td>value</td>
+</tr>
+
+<tr>
+<td><code>ATSNF+&lt;TEXT&gt;</code></td>
+<td>Set the first name to <TEXT>.</td>
+<td><code>=&gt; new first name saved in NVM</code></td>
+</tr>
+
+<tr>
+<td><code>ATSNL+&lt;TEXT&gt;</code></td>
+<td>Set the last name to <TEXT>.</td>
+<td><code>=&gt; new last name saved in NVM</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>Examples:</p>
+
+<pre><code>ATDOH+13  //change status pin 13 to HIGH
+
+ATDOL+13 //change status pin 13 to LOW
+
+ATSNF+Hacker // Set the first name to Michel (whats displayed in red on the name view)
+</code></pre>
+
+<h2 id="your-turn">Your turn</h2>
+
+<p>You can hack that badge, you can use the NINA module in your own project as well as the EPD as they both are not soldered. The sensor module can be used as well, you only need to desolder it from the badge first if you want to use it standalone.</p>
+
+<blockquote>
+<p>There are many more examples on github under the <a href="https://github.com/rac2030/IoT-conference-badge/tree/firmware/firmware/examples">firmware/examples</a> folder</p>
+</blockquote>
+
+<h4 id="buttons">Buttons</h4>
+
+<p>You have 4 buttons available, see <a href="https://github.com/rac2030/IoT-conference-badge/blob/firmware/firmware/examples/ButtonWithInterrupt/buttonWithInterrupt.ino">buttonWithInterrupt.ino</a> for an example on how to use them and which pins they are connected to. You can find also an additional examples on how they can be used with the TaskScheduler library that was used in the badge firmware as well in <a href="https://github.com/rac2030/IoT-conference-badge/blob/firmware/firmware/examples/taskScheduler/taskScheduler.ino">taskScheduler.ino</a>.</p>
+
+<h4 id="e-paper-display">E-Paper display</h4>
+
+<p>There are several examples on how to use the EPD, take a look at the <a href="https://github.com/rac2030/IoT-conference-badge/tree/firmware/firmware/examples/GxEPD_SPI_TestExample_NINA">GxEPD test example</a> to see how to use it with the GxEPD library.</p>
+
+<h4 id="leds">LEDs</h4>
+
+<p>You have 4 WS2812b addressable LEDs on the badge, just be aware that they suck power and it&rsquo;s not recommended to use them without external power source. Find an example using the FastLED library in <a href="https://github.com/rac2030/IoT-conference-badge/blob/firmware/firmware/examples/LED-Siren/LED-Siren.ino">LED-Siren.ino</a>.</p>
+
+<h4 id="sensor-module">Sensor module</h4>
+
+<p>I adapted the arduino library from sensirions github for the sensor module and you can see how to use it in the <a href="https://github.com/rac2030/IoT-conference-badge/tree/firmware/firmware/examples/SGPC3-demo">SGPC3 demo</a> project.</p>
+
+<h4 id="i2c-devices">I2C devices</h4>
+
+<p>You have 2 I2C buses on the NINA, if on the badge we used one for the sensor module and the other is exposed on the bottom with 2 headers.
+See <a href="https://github.com/rac2030/IoT-conference-badge/blob/firmware/firmware/examples/i2c_scanner/i2c_scanner.ino">i2c_scanner.ino</a> for an example and you can directly use this sketch to scan both buses for devices once you connected something to it.</p>
+
+<h2 id="pinout">Pinout</h2>
+
+<p>The pins on the side are 1:1 mapped to the <a href="/project/nina-w102-minimal-breakout/">NINA-W102 minimal breakout</a> and you can take this pinout for the badge as well.
+
+<figure>
+    <a href="https://github.com/rac2030/breakout-boards/raw/master/ublox_NINA-W102/pinout/pinout-diagram.pdf" target="_blank">
+        <img src="/project/nina-w102-minimal-breakout/pinout-diagram.png" />
+    </a>
+    
+    <figcaption>
+        <p>
+        
+        <a href="http://gnz.io"> 
+            Made by gnz.io
+        </a> 
+        </p> 
+    </figcaption>
+    
+</figure>
+</p>
+
+<h2 id="schematics">Schematics</h2>
+
+<p>See <a href="https://github.com/rac2030/IoT-conference-badge/blob/master/hardware/badge-mainboard-rev.0.3.7.pdf">badge-mainboard-rev.0.3.7.pdf</a> and <a href="https://github.com/rac2030/IoT-conference-badge/blob/master/hardware/sensors-module-board-rev.0.1.0.pdf">sensors-module-board-rev.0.1.0.pdf</a> for the corresponding schematics. Additional you want to look at the <a href="/project/nina-w102-minimal-breakout/">NINA-W102 minimal breakout</a> for more information on the heart of this badge.</p>
+
+<h2 id="pcb-layout">PCB Layout</h2>
+
+<p>TBW. but for now, here is a rendering of the backside
+
+<figure>
+    
+        <img src="/project/makezurich-18-badge/badgebackrender.png" />
+    
+    
+</figure>
+</p>
+
+<h2 id="bom">BOM</h2>
+
+<table>
+<thead>
+<tr>
+<th>Ref</th>
+<th>Qty</th>
+<th>Value</th>
+<th>Digikey</th>
+<th>Price</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>XX</td>
+<td>X</td>
+<td>XXX</td>
+<td>XXX</td>
+<td>CHF XXX</td>
+</tr>
+</tbody>
+</table>
+
+<blockquote>
+<p>Note: TBW. but for now you can see <a href="https://github.com/rac2030/IoT-conference-badge/blob/master/hardware/badge-mainboard-BOM-r.0.3.7.html">https://github.com/rac2030/IoT-conference-badge/blob/master/hardware/badge-mainboard-BOM-r.0.3.7.html</a></p>
+</blockquote>
+
+<h2 id="making-of">Making of</h2>
+
+<p>TBW. but was a fun journey with lots of last minute fixes and deliveries ;-)</p>
+
+<p>For your enjoyment, here are some pictures that where made during the past couple months while going from an idea to the final badge you have now around your neck.</p>
+
+
+<figure>
+    
+        <img src="https://lh3.googleusercontent.com/yBERsCrvNWXTpS3rPB3FVUgqzVIt1QwP66tyd9RF3aPjIYTWwhSJ90tZRkxRXQ1UGgIRmhSL-mpWgHYA_xEatZBao09hsejqUJtSSfhqDneTm-p4kUof29t4iw1SVF2Nwjt-9m62d6VFuXqx9zBWO0QyLH-gUPZfvrueDQl1aiqbuxNCkMCpISU2D8AnSx75GZIFzCpG0EES3WLMmJ6kHXB2WV66306k8bWLK55D1i5fP0rKJsw6IZq6Hq4W2wo_wboQEYkqDxh6Lyje03I9t2uhxklFYn6l3Z2E2JXVmFvNBpNFiVSiu8X7algV3-ZV5AKJYCwMqDju02uvuYHeZiLbs6V7Tl4nOEBHlRX-PpNoJycKmYvRE5mzPHrpP8_oR-Up5-uG81LN0IDeNI3HojPe7m2J-zduN_VqTxZBMycGDkhAC7LUZ4Y-FYB0ax1o4nUZ9FwrliCgGbMUF6okz9S2J2Pzk4FuBP1bv5SMjMbyC43I6aDiMOFvAdX242lKHzAx1cuwCY4CMaL-mrcJAzC-vJmywLZsTgRsx-Qd32ybF7-nakY8mFo_sXNVD5OmsMKwfsu_CiplBt9rhhEyWCdTXdvI9vQ9790r4Gw9ig3v4IQPC-I4MrOdug57FQBWPjyncVxHIw5DAIibGT6aSMFJ2JJBqBKwRA=w1374-h1831-no" />
+    
+    
+</figure>
+
+
+<p>
+<figure>
+    
+        <img src="https://lh3.googleusercontent.com/V8dKI0ypgncpVY1eJm6biwbZXxvXqgX9QV7LIXqj6EUF5nWzogWX9eSefGYYLaDDictr57Pm5pQyvgwuJIlUJVsM8p1UCE1QOPKCpgMo-3XW7ovHOEfibB8zq04ojICid8HRHom1DsA0yiR3aLbfwwCfkqoFYPigDG5IMSn2v0UqPLpRr-wFHXUmTDkyPiiEq3JGjQ-Cq3NiUq2y-wdlcANhgZwjleRi-T0Y0kA7BhvR-xL9PpQdiCo4YIc6ePypjWkp3xR6URNOlpW3rucLTes9EvI8sXCWY91mKCEUzJIm4dS9O13HzFF45VqGBWAulYe_zkHczfcI0xSwQ0EWrMThCgpMeCRWxwBhsz0jkSdl3WGC-kL1ArCLTDjKZNal0xwBFnK94A1nTVlvhH7RAOBW5HVlKag-GiHzZkcptxFGrEf8Zi62edIR90v4IjEzqZmqHjVJjWjL53QFGlVBB8GjtS1R4ZLHhOhwKPXIjcyWXA_xqqK8PiR1BRzOaf6imbABJck-HMr6JJCzIJ074zAKUvChgomHcDxvGd51I8gvwmSFTWlzievUA_v-OB8hyHS-9X9Lg3GEN6HHuCQ-MkV8mmoBwHhQYBwm4k-ZfZxOuh0dA7Yw9YAZxKLkviugR9DhwjjrIkqkOXQi7WAeV1kSDEDE1XTTjQ=w1030-h1831-no" />
+    
+    
+</figure>
+
+
+<figure>
+    
+        <img src="https://lh3.googleusercontent.com/hU8_k2E_eQ67wN4FgIZRYbPBMCtZtzpk88AL_37azbBozEmRYgEzkWIsAPSJlj1XYG60c8boGkwURu5IraME9zxEEWXWu5Ge6VU1V9ArfPjYxWP8qlmCUd1aa3rHkhzXPdtKIztth958RvW0TCV8SQ4XkfHfQIP3cNcwBU4yBtGWcfKDUBc13v9W0sdF3e8-QC1NK9afBuxPnTh1jh2p7wURVjbL9lM6SM9IxT3NNM82xVoE_z0h1XeIt05Od7KHFYpKkZKMXwuLCO7vgx6Y_236f4cae2kULJI2fBwOFZUHgC357x6P_6-NEBPx029Ho0rPYAukLUYePyD5fhrO1g5zYv4Og49XkpB5F5MIiqutP1rrCbdOPz1OBXgroslTlegYqerBCwaFpgcFCX-TZN2UF35ZE9fg6-PX3DxUJrJs9C_RF32LXf58L4IcgfspG1wBLw40EK_Wi3kY8xphfWHZsOQ-HYUAz8yU3oJbIhGkhZTkSuKxL96UkqX2fGirq8oRZKcT4lIFBMfv4IDQv6vAjRRf4EINAHguI-EjeFxXlpJANgdolWb9lPxNebkBkCGvWYIk2kmRU2vGpcvw-y6lQAy51-4nKrpYC6pvIxAaF3EMcjf3VQ8cj0ZTAqmna885fmC0yK3bFrX0qJGHyn5vu75BupPsAw=w1374-h1831-no" />
+    
+    
+</figure>
+
+
+<figure>
+    
+        <img src="https://lh3.googleusercontent.com/s_RxsgjThoHlJQxE2JJ-qNzIfYfFBE3gwHz5lQDgJYc0BQptyfe5MBNb9fYwvvbjsaiwVNnO7vnLdh9WUqNi15_UQiIXzTeCG2Tk3C9begoEpo5X6lSEYbejujY7p_3IG_VP0d689IkIRw4mvT34L1MLkV5YbgJ35QbrohWOOIsbVKwTz5XcZmbrGZjAMaJBBYya3ai-pY2_i0dmIhbE0mazDleXvOQ0vJBFMEmJC_TNrrTU3gWMDd7jTvNZTg3jpjY0sJwBzC9a5kGYRDbLyIssVBMZ1Umw-QVhpjNhH5RvcucxX7G3GF8ZINvkxURX-CgaVvukrvke-JcC7pSVNTYAYTz65WsrRyoS96Z8hKfXDYfsFtbLE3P1_ygCEvvt_mE9MA7DyJo24R8orrq6jo746Ov5FcQnZjvgTp7PZTqiTtUAZXxbClKEoaLX3vaHC_Ma1PRAw9QfEP24t9EhnlQfAz3An8xuJAAUjmYL6mj65xNfhxzoSDmHyBmf9iGDVtWAPejiTNQD6_M3G55TVvpj5HlQN6MIPuQOLv-R4sB-JmR_KzLpRvCgjjWolntKpCGDLPbBh2KEy_IbFHNL_u6iPPm6uLN17EkSje_MSg2eB-QG9YEjy_sxFuDagBUw2wwR3M0rCwAkQ9VYt1Yhm38xDTqwajQWlA=w1374-h1831-no" />
+    
+    
+</figure>
+</p>
+
+<p>
+<figure>
+    
+        <img src="https://lh3.googleusercontent.com/MIQRzri7IxWL-023wJZXZyot96NO9hWjIH3_AS2A46_IHWzA2qScbFvEw6APkTwpBuwIwVCzcbXs0XNCw-GLP485L0BImrg4r9UXmWBUSsjumABEHO0Z8YzCXnHXpT4BgWVjO84T9_RLQ0WAQFJ8AkztBSP1eRDtZT9h-nwjrQ0dITyDaLZoXZ0mGmzLaEFq5B14HIj0YNjt2GUjnNpc7XNjz8ro-hsOguwn4y9jQJV5XjzDHvtxqnJP76i2G_WA4At4aquGzpm1uxGk8Xwige72ZrcumoJO3tvihG1s0FLQwOjPR4XtwCR8zt0V3cEuoPJOEsKB2MU5KBsJB81iKQWXI3XzivYsPm-3JZ7Y-t3SXIUuDTAGJZMx1d_Q_s6qW8xgREHdkLq1B24exBsRSGWygqaqhw22J4Hgeji4UMzM2jHqaicE81bd36gady4FC9-qvWmcH79dhvn53xZ9ErKFFWEzEUhW_h2v6q-ko1QQ6h2m9qZ9VOlfVOD357pyiTiKERhs0Lr41m-2ls5a66f786rDQ7wAf2nwzwh9GjE7h_wWMlIp4rsIcyAfXFnuH-KgG5V6VV-5TpSVflB7qyMuPudic7nNog-SGEeueFWiHk2gSOdorSaryMAG5-922Hgk_6_0kdeMxjjwED0r0avXVZs_QwoUxQ=w1374-h1831-no" />
+    
+    
+</figure>
+
+
+<figure>
+    
+        <img src="https://lh3.googleusercontent.com/Q9at4ijv9G5eWYk85nqapfzvlRQRCghYx97ORuIAPVkVNGpi-PyhPwt840aCC6V6s6BYM4Ix9Y1bjvwSVCkF4ndlLzTSNWuXpJIpcjeiiiVjeTwzbYgR3eeYRQL8-j4m5mRAYTwGRGfgKcCFhgE7JR0PVj-qm-8_bdiHZq5-S3KTQa5Z9fR8eBBYUr0r5ThyUb4V6OtncNkp6GCDWDbZ45ZxmdUZayOrXmDiXGL5mJu1yIUL78-aLLL2v5ycAwmJtU8DZVJpEs_ibKnKHSkV80WRWCsHQOcqcVpbG_6f3UGW5C1_gofnLVJyBZNax5gyO3Gq0GMmDztuRyyUO3D9VYWUN9P4QmZyGM9Wvty3qcD0l9pGoKFR-e-nAal6lvb9w2iCobx5jn8S66qtPTjEbd1y5uKz4wwpokuoLEH8xs2QbIHYkonNLSa_yhqYB1ZGC4hLoun_snMd4OxUBFYnOlqyIAyAiP95j2OzCaUALS9wUOCVDPOMVpYCucJ5jbVAqgWU7wekJ-jcr-yFhUb-HXzQVY-DxNt74AEkoGNMeXTnm1K8t8vkt3hnyA6LaY4gaetjqXuSrTV3zTDzF4GHpbUJ4DPouI5ZvPtKbVLY2UZ9OaCR9h439iKYuA8TphWq9Y9mHAGo5w4p1HCCHKM2XVKBMWyOS0sxRw=w276-h367-no" />
+    
+    
+</figure>
+
+
+<figure>
+    
+        <img src="https://lh3.googleusercontent.com/5cXkm39FeFHIu2xv3r94QPGsHy7i3xfryQhsecaVC--No6azZFoUyRinnmA4BaG2DhKCIqrqMgqcpbUg0RyJ-Gija4Td1M6atUtAWoow3EWaRFk5Mrml-gFCrcR5vVcupCxMNnhkBMWb7vHXbUCUbCLkttCE-YyfKUj2n5q8xdTEkzKdTVqo0xFhfMn4OcUCGDna97pM78ST_G4jC7Jw8gnSgYB7n0n5W16S7EQOCVRjDtODhdoyZ_aUFBaQSikdux9-QkpfG4ha26JCy4qGBV9rZbcWDhqgeLkE2F-CaapnAucnCbCZaJ5key-CC_7zQJZQ-NCbXuLottyobFG6TWTkFFqaKtNUlyJQ0cdFH0EIVq9hbNWuryuglXryvxrZEPbrIc_jLvKGYWK3cz_SZkVZGiFUASQGUgYFULRl7rcUrKpz_3FnhEUrE85bXJc2Q-70H-kMFbjScfaeWmhY5Z5faFCkXNKik0PKHMvypkPqzjy6wL0TbXBnIZsQZ6qERTSGKpd8sui78wA6SWPlxz-UgaizNH9G3_oAwnXP1Bf9-Ns-EJOLNkmXtJB6y65mJsS7x2r42YxfZ7hvGE-713e8cEH5_FfiWjqCk9mNadf-QIGxoctS5mqJjSHCSJnPzhy0sfb5VDYUcrYBZfmlbV6rU5pBJuPivw=w1470-h1103-no" />
+    
+    
+</figure>
+
+
+<figure>
+    
+        <img src="https://lh3.googleusercontent.com/HQl2_jrPgpVPAqLf0BXMd0uJEaHFCfychaeVc2_uv98WEgm9xH1FYATD4r19b72TQ-Cb6eBVecdV92Hc3oHItnUSXFtQLZ0CT8Hz0bHdETHeE5kac9S3-G1XiCkPsk38j5cwzn94oPxve3EzATr2BM8MLvgZg0GQrAiVKuQpGSUenHRdAWQhwIg9MSOM-9zneaU7IVYS3b568FW9KQNwPU0z0tOBarEPEoi9_85s3uY7J_LTblqQOZPL3skJCQO710eCEW-av9DyHZVvkHWE-Z6xKyB3gP106Y6GrxfxAj5n5XXzKaVX1mVPppFKDczQRC19Ouok9Cxewgz2lIOWCNoAoeheKBdw37QZABHT8bZ9desqL97LQrFKFePx9wmKYvv5KMTsM1OQuyDlmveZTFLjlqQ1swZm2yRhwdtknGW7WyP5iGM3B6sIgm2xUxG10pV8h1eaYNYpr_oxQ02847g4vAiQNbCYR5LmgEIlmGWhHd-H43xJCvEnIqc7ImE_FMHdpMiVcxtpP0R77exePnuJR9XcqQT1_5NPL9GAqrinrI6fdKe0dEnkiF3iZKzH26LI9WaCNnL6N2tRpb72mHhRNLHGe0zcZVGlc9h1OOPRQRNldLYJZGYs1c1e3ekQjC-JHF61Tbn9j3YxH-kOQj6rvCnMEMyRjQ=w1374-h1831-no" />
+    
+    
+</figure>
+
+
+<figure>
+    
+        <img src="https://lh3.googleusercontent.com/FHilIUFvf6oF_KxmytmKRgOIx4ySNe5_a-sIQC0rYly_u-RJffUgnoqfbaCCRx3S79bJnHFY4ggzuzvErb7BF5QUIGrqhuqjAj3EIPC6HM3rKqS9rDbKh2B5jz4eTAzR9nPkH-RTWC1r0z4OrzuSf_alnzjXZ6G8xrpAXXLM27dwF-Hbx4bMVWuRyh1y6TrcK4VLQD8rYcZDFkOTHvdT6_kWiVmVYoaMdDpsLyOjSYVFKUoAfIjpkfPmxc-s5eoZ5tP9H5SBbLtBm0H7jknEoRMe7C_TGvvdtdrIc8ZNl-JF5IOzJ0fcOJpWjaRfzuSJuJ7xNqwOOhqVESTplXTZtNiAPtUb00cNoYfRNJ26GDl64Aq3SSdhYZD9oa0KVR8aXbNSBUrF7Wz-AZzEwpsSModhc3LRroRIiOWKWyIR_GH4sO3jkW5C0Lolrdvc-M8-ba1zOAAiDw89lntvStkduT5EC2SMvTyLCbeOD5QB8EHpe9Aqw6-hYM6YU7v8InBjJ5JtBjie5na-0yEpp-A_B_D3E80M5QUAvRt0f2zC1GACGj-rICysZS9XZETr0SFWxoQaKKUy7szDFUPDLD-PFL7p-qqF1G_UCiQP8WMrBuMV1ih4dwvoUh7_r9lJoXVdY0Tg8LX8F2EGcrWxpv0la7hXRGZjOtVpTQ=w1470-h1103-no" />
+    
+    
+</figure>
+
+
+<figure>
+    
+        <img src="https://lh3.googleusercontent.com/bTxpYn4xVYr9tgK0eR2KjUmKNGleoJUO2dqGPyBLrne5-qHvsGkoT69C9hCI5GmedIuzHAA02DhjzlBb_7hjatYoRAW24SBR0pEPmPbm3VjA1utwPje7losCuaTiD-Q4p_cgQZjZgHdGiOsHvK7IUbTxmyFZ5XsKqeT7xlQ6qBXSOabouwHVPDuSfsgSJKlLvtgfCBkKmSCU8U8ly-mN8akzpYvhbYYkbBoxo04QMg6ggXi-6mW4JA10PuoFhqD7hzHxNNi6jLxfzdYcvSQLsJRQ6tHMQpteYB492mBXJAzDY7hPRs7rD-dU_tLW6dsjJPE4RNDljj2v2yWxb2AFBZhCCGBsDPx6oIlHaCoKQYIsWMvf7oeHnAY3-sSIRV4mgSOIeGRvohH4dmQR_vzWt50UXLhG4340aV1i8iswTblASvEbrcPZFMI_O_SKJl7Unaufc0auKqt1jsY-XUfHNuyoN64xtoaw31q4NWD3oDYCFzEykD3RQPbEp2VVQRtpOQIXMwHVBZhkndOKS04E_OdOxIIPmtDGo_2gZuAaxF02KNBbV7Sjhg5GdTdW2Zaez9eyFZ_Bk5JsFQsX7ri94KJhynnBTfGNFlNTwz38LYy_1Dmz3iA7Bn2hJH9Blp52119X0CPtYd0SMjIkCOZroA9R1dEjc5cIIA=w1470-h1103-no" />
+    
+    
+</figure>
+
+
+<figure>
+    
+        <img src="https://lh3.googleusercontent.com/D1rn1JJIhmrIggX03mDlgwma7m4kh4u9J2c4z4rAq5HoHbi-Zac7bz4MuAVWMpaLfv3wqf72FSLlOpcgGI0sUvTNmsbkAWDS2V0srj6zjoOiV9bLJVvm2YH5l6h8nsMLe17gX2AE3hXAvSjRNioE6ypOh429-eHdzqEzQod7geKcOvVE7R-U8ggUevzQgQt9QqQ-54x3TRvacU_p3_AOYk3RgZGTfzg1teuDcB7pwjOiZAw-k0mXFbflkDKMU8DZ-alRQjoY9wbt96CbIRgE00rtByUhkdj5o0I__zNbDrIuEkG1BLKUBf3l_Ls5L9GpI9814TlVfJegetF0765tK2VuXTuCYmWYnnmXu3Nr67ONn0rdBXG5CZ_0iCKZPBELjMmEqT3SpzLcsj8mVTxKZjGU3k9iwYKxRn1kwKu50ufJDc1b2XTPBoJgj50PR_pO4ZDsIG0Tajlj6X8os5uf_6dZfeMS666cjvvKcXHDeeIlfi8Wz9UsauJyJ_jlOjGcYlWdM6eR3tO0yBcY_1UAR8CkgvZMMbFEwlVkuxKfvbUbIdQ02QLTU-ixA09BG0EsJ8O5UawBbQFccYAHa5CIntEZpp_IjxiKFCMN4JsZW_5tBCDeRBE-5s7KwrzShMLrIuG0tQtr7Vz346hVerJ1EJZfHSlL4gdJVw=w1470-h1103-no" />
+    
+    
+</figure>
+</p>
+
+<p>
+<figure>
+    
+        <img src="https://lh3.googleusercontent.com/Ph3Q6T55e2Ah3ForL9rGFbsfO68CB1iEre8ORafPkBJl-EodzAGllkqXqH7L4gcPf6NAo9NWCahN3_gTmCN3QZHrHSKG9_r5lMZSxLwWe9eCryV-yW5SNUKxw97UEvFkmnQUwCFUs5y8r8AITk11i4UP_LweOfybEjLppRcy4TCeel6L4HA_4v4uletUgh6h5rK-aXzu2ywZo9LwI_7Ge4vCAgCONGPbx7XrtGscPBx5UVnxU-111wJz2YL_JvmPd-bZp0duowuIsTIpr8xoszbpCUeAxm-YdgU-DBkRR77c8_D-068oNzJtQVS2pAEnjB7RdJ-WSWX20iPsyqeyysoelTR8WCO5pZvRZ8vqHOSRElHsZdA81UttsXHaX-PNQzrHxBWM-rPldbsmLbxuygXts29c0fxcLXHG5kqAfZ1apRtGtcM3lGe6SGHKOIIC7UZ79c4_b0dfwEbMVud88Z8tbhaJCfy8JMCcDLbnq0eTR3WaAjQt_Jt_IV_TIiC7_e9guuc1XNSblOmChjLW3ZTwG5gh5HTFFZo3VN9u7WpGTEJWkKi_ghhhxscSnbJqAy7Guha_cjXPfDygp6_tCtD9nNsWsw-WsVlsBUdtkZrkgluG5vZ6w2LiKm9q304mUkKWw2cLFvqQYi83oqnrJh1TvgYYmWcCag=w1470-h1103-no" />
+    
+    
+</figure>
+
+
+<figure>
+    
+        <img src="https://lh3.googleusercontent.com/0DresBHaC9NjRcYC0OLoQxbVbbvsSMuGPjwX4ypZAgNy2wVyA56Xhf13vv11yCHsgjYtzGQGJIUTlkccCecizyyKcLy0nzR0-T19CfcJN4qF4X05zBygM4a9aPRG_Z_MelHxGGqBkSiTmw2YSAHFFGXMk6AjlybSUbySFl8O-JOOcS9vJyXiqlvvqHhj52M4zt4pY3ubV9RENTuBh2b1Ubb_VMVoGadB1z0JxMKa6tPw6EJzLMEph3CLcUjZJHf2qh-dgSP-7adKe_gM0Uy4Wy5lr0aXabpjBo4v1ZlE9pP5NEXpQ73WlFp1A-vUyrZ1kDz7AdZF5oE3Qz5v3ukAcRjvV-jQhjsAQ8nRQ0hvC4ABZQsfGCrQe6vR2WCJcZ8OY4z0UNP7jQhGzyvBoCUygyfCp2TQqpAdgiCwSnOd91OYe_LpvreoqdQBWPfT4T7T3u8h1kpIiU7s_vN_Np2LTBaYwvaAewLFIRZFJ2FdUUUdBaR9bXOpOxf-guc_6LIutQM5YIpoexblqN3JmzAVVOrV4DKehhNZC1IjqDF1UANbpfSbspctZaKTl9kVW78PZid8DXXVjctsyItyaNI60bREqOJEmi5hM4P-e-1FCG6p-BywYQk4nrO9hfPGDy9uL3iWIkgFopAgsL3Z3A_8wryrdzmPFkZeqw=w1470-h1103-no" />
+    
+    
+</figure>
+
+
+<figure>
+    
+        <img src="https://lh3.googleusercontent.com/vAg_7d9rfl3dKZbnb1Ln-9pJMMxQrX8cF0xi-Vi1B1SPkTRS6IXV0i3Lh0shW_RQXIEQFZCK4ZT59z4LjXZS4PEoCu2lZwqnSTThRlIZmtn7v2tz4-5nJ5fiVI8qu05xj5oNY_wNk5PbGKjQXG971RXLXnWFVGfol265VyVeyl3sI1X-_xeJhtqD_dt6VnDrvzP8D-Ir7eIZHIMxahYXr5RP6uaOdF1OfnUIE6IMCCxgCWGJ9RfTi6X-Rau8u7L3xEcDHSwxu6-YkRjvh7p0NQSsqYqevaAt_VVOpOumpDL8W0ZUGbDpBS3upvzk641Q4Pse9DG3gqJnOcL43xH4EMwBx73zn9TdsayZeC7_HJbBq3iNgmuWgSfdnQisLFnRTa2m9WiyqMHCYrItZouCPG0KZIZ2SpKO5PDr30yJCIhhuqHCL5z30yWgmJlb30oWJaid8nH9i3jG0vjfuzFkgTmt_G3XJ9HQulSNG98LQcJsXb6HKjqQJU6egXJ3hIgIhl-qNKMYO_WGw3g2b5Trc99fvcT0xJ7gjOd5tcdMiosQ1t8C0oAjbV6rIeYIZm1_vOzESh0QXFKrAD2G_KepaiYdwdSOYc0A2UKzRuHUuTzCJOvamkZUN7ERYpOmaSIU9pMGBnFTVjveD84tt3NfU9qkWmM1tKnjmQ=w1374-h1831-no" />
+    
+    
+</figure>
+</p>
+
+<h2 id="sources">Sources</h2>
+
+<p>For now, the Firmware resides in its own branch, this will be merged in to master later. You find it at <a href="https://github.com/rac2030/IoT-conference-badge/tree/firmware/firmware">https://github.com/rac2030/IoT-conference-badge/tree/firmware/firmware</a> where you have the main firmware in the hackathon-kraftwerk folder and a couple of simple example code that has been written during firmware developement under examples. You can use the examples for tryouts or as a starting point.</p>
+
+<p>KiCAD schematic and PCB design sources are available on my github at <a href="https://github.com/rac2030/IoT-conference-badge/tree/master/hardware">https://github.com/rac2030/IoT-conference-badge/tree/master/hardware</a></p>
+
+<h2 id="team-contributions">Team contributions</h2>
+
+<p>During the design phase, this board has been reviewed and challanged from various people that are not github commiters. Therefore here I would like to thank all the people who helped going into production:</p>
+
+<ul>
+<li>Benjamin Marty</li>
+<li><a href="http://fastfocus.ch">Dirk Zugenmaier</a></li>
+<li><a href="http://gnz.io">Gonzalo Casas</a></li>
+<li>Matthias Schibli</li>
+<li>Michael Ammann</li>
+<li>Oliver Walkhoff</li>
+<li>Tillo Bosshart</li>
+<li>Urs Marti</li>
+<li><a href="http://kumin.ch">Tony Kümin</a></li>
+</ul>
+
+<blockquote>
+<p>Note: List is not in a specific order other than taken directly from TTN slack channel mz-badge and I may have forgotten to list someone here, ping me if it&rsquo;s you.</p>
+</blockquote>
+		</div>
+		
+	</article>
+	
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Michel Racic avatar" src="//rac.su/img/rac-300x300.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About Michel Racic</span>
+	</div>
+	<div class="authorbox__description">
+		I’m a coding and technology freak. I finished once my bachelor of engineering in computer science or on german “Dipl. Ing.” and currently I’m mostly coding in Java as main language besides some stuff in C, C&#43;&#43;, C#, HTML, JS, … - In my day job I work as a Software Engineer in Test and deal with all kind of Software from Native over Web into Mainframe where I use existing tools or write my own testing apps or libraries and the Frameworks around that they can be used in the most efficient way.
+	</div>
+</div>
+	
+<nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<div class="post-nav__item post-nav__item--prev col-1-2">
+		<a class="post-nav__link" href="//rac.su/project/makezurich-pakman/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">MakeZurich - PakMan</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next col-1-2">
+		<a class="post-nav__link" href="//rac.su/project/nina-w102-minimal-breakout/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">uBlox NINA-W102 minimal breakout</p></a>
+	</div>
+</nav>
+	
+<div class="comments">
+	<div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "rac-su" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+</div>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="//rac.su/" />
+	</form>
+</div>
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">Recent Posts</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/project/makezurich-pakman/">MakeZurich - PakMan</a></li>
+			<li class="widget__item"><a class="widget__link" href="/project/makezurich-18-badge/">MakeZurich 2018 Badge</a></li>
+			<li class="widget__item"><a class="widget__link" href="/project/nina-w102-minimal-breakout/">uBlox NINA-W102 minimal breakout</a></li>
+			<li class="widget__item"><a class="widget__link" href="/project/makezurich-mobifloc/">MakeZurich - MoBiFloC</a></li>
+			<li class="widget__item"><a class="widget__link" href="/libs/sensirion-sdp3x-driver/">Sensirion SDP3x Arduino driver</a></li>
+			<li class="widget__item"><a class="widget__link" href="/libs/">Libs</a></li>
+			<li class="widget__item"><a class="widget__link" href="/project/">Projects</a></li>
+		</ul>
+	</div>
+</div>
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">Categories</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="//rac.su/categories/arduino">Arduino</a></li>
+			<li class="widget__item"><a class="widget__link" href="//rac.su/categories/developement">Developement</a></li>
+			<li class="widget__item"><a class="widget__link" href="//rac.su/categories/howto">Howto</a></li>
+			<li class="widget__item"><a class="widget__link" href="//rac.su/categories/library">Library</a></li>
+			<li class="widget__item"><a class="widget__link" href="//rac.su/categories/links">Links</a></li>
+		</ul>
+	</div>
+</div>
+	
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/administration" title="administration">administration</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/apache" title="apache">apache</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/arduino" title="arduino">arduino</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/compile" title="compile">compile</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/development" title="development">development</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/firebase" title="firebase">firebase</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/friends" title="friends">friends</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/fun" title="fun">fun</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/git" title="git">git</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/google" title="google">google</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/hackathon" title="hackathon">hackathon</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/hacking" title="hacking">hacking</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/hosting" title="hosting">hosting</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/hugo" title="hugo">hugo</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/java" title="java">java</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/linux" title="linux">linux</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/lorawan" title="lorawan">lorawan</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/programming" title="programming">programming</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/pwa" title="pwa">pwa</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/scm" title="scm">scm</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/searching" title="searching">searching</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/security" title="security">security</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/sensor" title="sensor">sensor</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/serviceworker" title="serviceworker">serviceworker</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/shell" title="shell">shell</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/ssl" title="ssl">ssl</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/witzig" title="witzig">witzig</a>
+	</div>
+</div>
+</aside>
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2018 Michel Racic.<span style="float: right;"><a style="cursor: default; color: #3b3b3b;" href="/π">π</a></span></p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-92066434-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+</body>
+</html>

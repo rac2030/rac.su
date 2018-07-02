@@ -1,0 +1,3 @@
+User-agent: *
+
+Sitemap: //rac.su/sitemap.xml

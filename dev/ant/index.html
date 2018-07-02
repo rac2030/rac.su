@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ANT</title>
+<meta name="description" content="Just a space where I write down stuff for my own reuse...">
+<meta name="generator" content="Hugo 0.41" />
+<meta property="og:title" content="ANT" />
+<meta property="og:description" content="Notizen zum Thema wie ANT files aufgebaut sind.
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="//rac.su/dev/ant/" />
+
+
+
+<meta property="article:published_time" content="2008-01-05T16:21:28&#43;00:00"/>
+
+<meta property="article:modified_time" content="2017-03-18T23:50:03&#43;01:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+<link rel="stylesheet" href="//rac.su/css/style.css" type="text/css" media="all" />
+<script type="text/javascript" src="//rac.su/js/scripts.js"></script>
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="//rac.su/" title="RAC&#39;s notepad" rel="home">
+						<h1 class="logo__title">RAC&#39;s notepad</h1>
+						<h2 class="logo__tagline">Just some braindumps</h2>
+					</a>
+				</div>
+			</div>
+			<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item "><a class="menu__link" href="/project/">PROJECTS</a></li>
+		<li class="menu__item "><a class="menu__link" href="/libs/">LIBRARIES</a></li>
+		<li class="menu__item "><a class="menu__link" href="/socialstream/">SOCIAL STREAM</a></li>
+		<li class="menu__item "><a class="menu__link" href="/links/">BOOKMARKS</a></li>
+	</ul>
+</nav>
+		</header>
+		<div class="wrapper clearfix">
+
+<div class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		<header class="post__header clearfix">
+			<h1 class="post__title">ANT</h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="post__meta-date" datetime="2008-01-05 16:21:28 &#43;0000 UTC">January 05, 2008</time>
+				
+					(<time class="post__meta-date" datetime="2017-03-18 23:50:03 &#43;0100 &#43;0100">Last modified on March 18, 2017</time>)
+					
+			</p>
+		</header>
+		
+		    <div id="toc" class="well col-md-4 col-sm-6" style="float: right;padding: 0.01em 10px;border-radius: 10px 0px 0px 10px;-moz-border-radius: 10px 0px 0px 10px;-webkit-border-radius: 10px 0px 0px 10px;border: 2px dotted #0040ff;">
+		    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#aufbau-von-ant-files">Aufbau von Ant-Files</a></li>
+<li><a href="#abhängikeit">Abhängikeit</a></li>
+<li><a href="#variabeln">Variabeln</a></li>
+<li><a href="#java-compilieren">Java Compilieren</a></li>
+<li><a href="#jar-file-erstellen">Jar File erstellen</a></li>
+<li><a href="#ausführen-von-java-code">Ausführen von Java Code</a></li>
+<li><a href="#erstellen-von-ordnern">Erstellen von Ordnern</a></li>
+<li><a href="#löschen-von-ordnern-und-dateien">Löschen von Ordnern und Dateien</a></li>
+<li><a href="#junit-tests">JUnit Tests</a></li>
+<li><a href="#classpath-definieren">Classpath definieren</a></li>
+</ul></li>
+</ul>
+</nav>
+		    </div>
+		
+		<div class="post__content clearfix">
+			<p>Notizen zum Thema wie ANT files aufgebaut sind.</p>
+
+<p></p>
+
+<h2 id="aufbau-von-ant-files">Aufbau von Ant-Files</h2>
+
+<p>Das Ant File heisst immer: <code>build.xml</code></p>
+
+<p>Hällt man sich daran braucht man kein AntFile anzugeben.</p>
+
+<table>
+<thead>
+<tr>
+<th>Tag</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>project</td>
+<td>Ant Files beginnen immer mit dem <code>&lt;project&gt;</code> Tag. Dieser geht über das ganze File und hat den Parameter default. Wird nichts anderes angegeben führt er das Target mit dem im default Parameter angegebenen Namen aus.</td>
+</tr>
+
+<tr>
+<td>target</td>
+<td>Der Target Tag ist im Projet enthalten. Er hat den Parameter name. Dieser Wert ist frei wählbar.</td>
+</tr>
+
+<tr>
+<td>echo</td>
+<td>Gibt die Message im Parameter message aus.</td>
+</tr>
+</tbody>
+</table>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#008000;font-weight:bold">&lt;project</span> <span style="color:#b44">default=</span><span style="color:#b44">&#34;nina&#34;</span><span style="color:#008000;font-weight:bold">&gt;</span>
+  <span style="color:#008000;font-weight:bold">&lt;target</span> <span style="color:#b44">name=</span><span style="color:#b44">&#34;franziska&#34;</span><span style="color:#008000;font-weight:bold">&gt;</span>
+   <span style="color:#008000;font-weight:bold">&lt;echo</span> <span style="color:#b44">message=</span><span style="color:#b44">&#34;Hello Franziska&#34;</span><span style="color:#008000;font-weight:bold">/&gt;</span>
+  <span style="color:#008000;font-weight:bold">&lt;/target&gt;</span>
+  <span style="color:#008000;font-weight:bold">&lt;target</span> <span style="color:#b44">name=</span><span style="color:#b44">&#34;nina&#34;</span><span style="color:#008000;font-weight:bold">&gt;</span>
+   <span style="color:#008000;font-weight:bold">&lt;echo</span> <span style="color:#b44">message=</span><span style="color:#b44">&#34;Hallo Nina&#34;</span><span style="color:#008000;font-weight:bold">/&gt;</span>
+  <span style="color:#008000;font-weight:bold">&lt;/target&gt;</span>
+<span style="color:#008000;font-weight:bold">&lt;/project&gt;</span></code></pre></div>
+
+<h2 id="abhängikeit">Abhängikeit</h2>
+
+<p>Ist ein Taget vom andern abhängig, so kann das in der Folgenden weise bekundet werden:
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#008000;font-weight:bold">&lt;target</span> <span style="color:#b44">name=</span><span style="color:#b44">&#34;ich&#34;</span> <span style="color:#b44">depends=</span><span style="color:#b44">&#34;du,ihr&#34;</span><span style="color:#008000;font-weight:bold">&gt;</span></code></pre></div>
+Dann werden beim aufruf von &ldquo;ich&rdquo; immer erst &ldquo;du&rdquo; und &ldquo;ihr&rdquo; aufgerufen.</p>
+
+<h2 id="variabeln">Variabeln</h2>
+
+<p>Variabeln können mit dem Folgenden Befehl definiert werden:
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#008000;font-weight:bold">&lt;property</span> <span style="color:#b44">name=</span><span style="color:#b44">&#34;location&#34;</span> <span style="color:#b44">location=</span><span style="color:#b44">&#34;/home/noah&#34;</span> <span style="color:#008000;font-weight:bold">/&gt;</span></code></pre></div>
+Eingesetzt werden können die Variabeln mit:
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">${obj-dir}</code></pre></div></p>
+
+<h2 id="java-compilieren">Java Compilieren</h2>
+
+<p>Zum übersetzen von java kann in einem <code>&lt;target&gt;</code> einfach der <code>&lt;javac&gt;</code> Tag verwendet werden. Wird der Parameter &ldquo;srcdir&rdquo; angegeben, so werden alle .java Files in diesem Verzeichnis übersetzt.
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#008000;font-weight:bold">&lt;javac</span> <span style="color:#b44">srcdir=</span><span style="color:#b44">&#34;.&#34;</span> <span style="color:#008000;font-weight:bold">/&gt;</span></code></pre></div></p>
+
+<h2 id="jar-file-erstellen">Jar File erstellen</h2>
+
+<p>Um ein Jar File zu erstellen kann innerhalb eines Targets der <code>&lt;jar&gt;</code> Tag verwendet werden. Ein jar kann sich selber natürlich nicht enthalten. Im Beispiel werden alle .class Files in allen Unterordnern von basedir zum jar hallo.jar hinzugefügt.
+Welches die Mainclass ist kann nicht direkt angegeben werden.
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#008000;font-weight:bold">&lt;jar</span> <span style="color:#b44">destfile=</span><span style="color:#b44">&#34;hello.jar&#34;</span> <span style="color:#b44">basedir=</span><span style="color:#b44">&#34;.&#34;</span> <span style="color:#b44">includes=</span><span style="color:#b44">&#34;**/*.class&#34;</span> <span style="color:#008000;font-weight:bold">/&gt;</span></code></pre></div></p>
+
+<h2 id="ausführen-von-java-code">Ausführen von Java Code</h2>
+
+<p><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#008000;font-weight:bold">&lt;java</span> <span style="color:#b44">classname=</span><span style="color:#b44">&#34;hello&#34;</span> <span style="color:#b44">classpath=</span><span style="color:#b44">&#34;hello.jar&#34;</span> <span style="color:#b44">fork=</span><span style="color:#b44">&#34;true&#34;</span> <span style="color:#008000;font-weight:bold">/&gt;</span></code></pre></div>
+Damit wird ein neuer Prozess erstellt der die Klasse &ldquo;hello&rdquo; aus im Jar hello.jar ausführt.</p>
+
+<h2 id="erstellen-von-ordnern">Erstellen von Ordnern</h2>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#008000;font-weight:bold">&lt;mkdir</span> <span style="color:#b44">dir=</span><span style="color:#b44">&#34;/home/noah/myproject&#34;</span> <span style="color:#008000;font-weight:bold">/&gt;</span></code></pre></div>
+
+<h2 id="löschen-von-ordnern-und-dateien">Löschen von Ordnern und Dateien</h2>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#008000;font-weight:bold">&lt;delete</span> <span style="color:#b44">dir=</span><span style="color:#b44">&#34;/home/noah/myproject&#34;</span> <span style="color:#008000;font-weight:bold">/&gt;</span>
+<span style="color:#008000;font-weight:bold">&lt;delete</span> <span style="color:#b44">file=</span><span style="color:#b44">&#34;/tmp/huj&#34;</span> <span style="color:#008000;font-weight:bold">/&gt;</span>
+<span style="color:#008000;font-weight:bold">&lt;delete&gt;</span>
+<span style="color:#008000;font-weight:bold">&lt;fileset</span> <span style="color:#b44">dir=</span><span style="color:#b44">&#34;/home/noah/myproject&#34;</span> <span style="color:#b44">includes=</span><span style="color:#b44">&#34;**/*.class&#34;</span> <span style="color:#008000;font-weight:bold">/&gt;</span>
+<span style="color:#008000;font-weight:bold">&lt;/delete&gt;</span></code></pre></div>
+
+<h2 id="junit-tests">JUnit Tests</h2>
+
+<p>Unitests können auch ausgeführt werden. Oft gibt es Probleme weil junit.jar nicht im Class-Path ist.
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#008000;font-weight:bold">&lt;junit&gt;</span>
+  <span style="color:#008000;font-weight:bold">&lt;test</span> <span style="color:#b44">name=</span><span style="color:#b44">&#34;ExampleTest&#34;</span> <span style="color:#008000;font-weight:bold">/&gt;</span>
+<span style="color:#008000;font-weight:bold">&lt;/junit&gt;</span></code></pre></div></p>
+
+<h2 id="classpath-definieren">Classpath definieren</h2>
+
+<p>Direkt im <code>&lt;project&gt;</code> Tag:
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">  <span style="color:#008000;font-weight:bold">&lt;path</span> <span style="color:#b44">id=</span><span style="color:#b44">&#34;classpath.base&#34;</span><span style="color:#008000;font-weight:bold">&gt;</span>
+  <span style="color:#008000;font-weight:bold">&lt;/path&gt;</span>
+  <span style="color:#008000;font-weight:bold">&lt;path</span> <span style="color:#b44">id=</span><span style="color:#b44">&#34;classpath.test&#34;</span><span style="color:#008000;font-weight:bold">&gt;</span>
+    <span style="color:#008000;font-weight:bold">&lt;pathelement</span> <span style="color:#b44">location=</span><span style="color:#b44">&#34;/usr/lib/java/junit.jar&#34;</span> <span style="color:#008000;font-weight:bold">/&gt;</span>
+    <span style="color:#008000;font-weight:bold">&lt;pathelement</span> <span style="color:#b44">location=</span><span style="color:#b44">&#34;.&#34;</span> <span style="color:#008000;font-weight:bold">/&gt;</span>
+    <span style="color:#008000;font-weight:bold">&lt;path</span> <span style="color:#b44">refid=</span><span style="color:#b44">&#34;classpath.base&#34;</span> <span style="color:#008000;font-weight:bold">/&gt;</span>
+  <span style="color:#008000;font-weight:bold">&lt;/path&gt;</span></code></pre></div></p>
+
+<p>Später kann mit
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#008000;font-weight:bold">&lt;classpath</span> <span style="color:#b44">refid=</span><span style="color:#b44">&#34;classpath.test&#34;</span> <span style="color:#008000;font-weight:bold">/&gt;</span></code></pre></div>
+darauf zugegriffen werden. Z.B. innerhalbe eines JUnit-Tags.</p>
+		</div>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="/tags/java/" rel="tag">java</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/programming/" rel="tag">programming</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/compile/" rel="tag">compile</a></li>
+	</ul>
+</div>
+	</article>
+	
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Michel Racic avatar" src="//rac.su/img/rac-300x300.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About Michel Racic</span>
+	</div>
+	<div class="authorbox__description">
+		I’m a coding and technology freak. I finished once my bachelor of engineering in computer science or on german “Dipl. Ing.” and currently I’m mostly coding in Java as main language besides some stuff in C, C&#43;&#43;, C#, HTML, JS, … - In my day job I work as a Software Engineer in Test and deal with all kind of Software from Native over Web into Mainframe where I use existing tools or write my own testing apps or libraries and the Frameworks around that they can be used in the most efficient way.
+	</div>
+</div>
+	
+<nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<div class="post-nav__item post-nav__item--prev col-1-2">
+		<a class="post-nav__link" href="//rac.su/security/world-writeable-files/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">Scanning a Filesystem for files with weak restrictions</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next col-1-2">
+		<a class="post-nav__link" href="//rac.su/wiki/using-google/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">Using Google</p></a>
+	</div>
+</nav>
+	
+<div class="comments">
+	<div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "rac-su" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+</div>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="//rac.su/" />
+	</form>
+</div>
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">Recent Posts</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/project/makezurich-pakman/">MakeZurich - PakMan</a></li>
+			<li class="widget__item"><a class="widget__link" href="/project/makezurich-18-badge/">MakeZurich 2018 Badge</a></li>
+			<li class="widget__item"><a class="widget__link" href="/project/nina-w102-minimal-breakout/">uBlox NINA-W102 minimal breakout</a></li>
+			<li class="widget__item"><a class="widget__link" href="/project/makezurich-mobifloc/">MakeZurich - MoBiFloC</a></li>
+			<li class="widget__item"><a class="widget__link" href="/libs/sensirion-sdp3x-driver/">Sensirion SDP3x Arduino driver</a></li>
+			<li class="widget__item"><a class="widget__link" href="/libs/">Libs</a></li>
+			<li class="widget__item"><a class="widget__link" href="/project/">Projects</a></li>
+		</ul>
+	</div>
+</div>
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">Categories</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="//rac.su/categories/arduino">Arduino</a></li>
+			<li class="widget__item"><a class="widget__link" href="//rac.su/categories/developement">Developement</a></li>
+			<li class="widget__item"><a class="widget__link" href="//rac.su/categories/howto">Howto</a></li>
+			<li class="widget__item"><a class="widget__link" href="//rac.su/categories/library">Library</a></li>
+			<li class="widget__item"><a class="widget__link" href="//rac.su/categories/links">Links</a></li>
+		</ul>
+	</div>
+</div>
+	
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/administration" title="administration">administration</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/apache" title="apache">apache</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/arduino" title="arduino">arduino</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/compile" title="compile">compile</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/development" title="development">development</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/firebase" title="firebase">firebase</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/friends" title="friends">friends</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/fun" title="fun">fun</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/git" title="git">git</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/google" title="google">google</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/hackathon" title="hackathon">hackathon</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/hacking" title="hacking">hacking</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/hosting" title="hosting">hosting</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/hugo" title="hugo">hugo</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/java" title="java">java</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/linux" title="linux">linux</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/lorawan" title="lorawan">lorawan</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/programming" title="programming">programming</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/pwa" title="pwa">pwa</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/scm" title="scm">scm</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/searching" title="searching">searching</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/security" title="security">security</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/sensor" title="sensor">sensor</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/serviceworker" title="serviceworker">serviceworker</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/shell" title="shell">shell</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/ssl" title="ssl">ssl</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/witzig" title="witzig">witzig</a>
+	</div>
+</div>
+</aside>
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2018 Michel Racic.<span style="float: right;"><a style="cursor: default; color: #3b3b3b;" href="/π">π</a></span></p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-92066434-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+</body>
+</html>

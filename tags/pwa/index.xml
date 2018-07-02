@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pwa on RAC&#39;s notepad</title>
+    <link>//rac.su/tags/pwa/</link>
+    <description>Recent content in Pwa on RAC&#39;s notepad</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 12 Mar 2017 17:35:53 +0100</lastBuildDate>
+    
+	<atom:link href="//rac.su/tags/pwa/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Enabling offline usage of a Hugo site (PWA)</title>
+      <link>//rac.su/hugo/pwa/</link>
+      <pubDate>Sun, 12 Mar 2017 17:35:53 +0100</pubDate>
+      
+      <guid>//rac.su/hugo/pwa/</guid>
+      <description>&lt;p&gt;PWA (Progressive Web Apps) are pretty cool for certain use cases like users having flaky connections (e.g. from mobiles) or just to reduce the initial loading time (after the first visit to the page). I document my exercise adding offline capability to a small single page site with no frequent updates that I built with Hugo and the Dimension theme.
+&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

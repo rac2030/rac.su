@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Java on RAC&#39;s notepad</title>
+    <link>//rac.su/tags/java/</link>
+    <description>Recent content in Java on RAC&#39;s notepad</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 05 Jan 2008 16:21:28 +0000</lastBuildDate>
+    
+	<atom:link href="//rac.su/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>ANT</title>
+      <link>//rac.su/dev/ant/</link>
+      <pubDate>Sat, 05 Jan 2008 16:21:28 +0000</pubDate>
+      
+      <guid>//rac.su/dev/ant/</guid>
+      <description>&lt;p&gt;Notizen zum Thema wie ANT files aufgebaut sind.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

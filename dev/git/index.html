@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GIT</title>
+<meta name="description" content="Just a space where I write down stuff for my own reuse...">
+<meta name="generator" content="Hugo 0.41" />
+<meta property="og:title" content="GIT" />
+<meta property="og:description" content="Some useful notes on GIT usage" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="//rac.su/dev/git/" />
+
+
+
+<meta property="article:published_time" content="2011-02-16T12:10:57&#43;01:00"/>
+
+<meta property="article:modified_time" content="2017-03-18T00:31:28&#43;01:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+<link rel="stylesheet" href="//rac.su/css/style.css" type="text/css" media="all" />
+<script type="text/javascript" src="//rac.su/js/scripts.js"></script>
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="//rac.su/" title="RAC&#39;s notepad" rel="home">
+						<h1 class="logo__title">RAC&#39;s notepad</h1>
+						<h2 class="logo__tagline">Just some braindumps</h2>
+					</a>
+				</div>
+			</div>
+			<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item "><a class="menu__link" href="/project/">PROJECTS</a></li>
+		<li class="menu__item "><a class="menu__link" href="/libs/">LIBRARIES</a></li>
+		<li class="menu__item "><a class="menu__link" href="/socialstream/">SOCIAL STREAM</a></li>
+		<li class="menu__item "><a class="menu__link" href="/links/">BOOKMARKS</a></li>
+	</ul>
+</nav>
+		</header>
+		<div class="wrapper clearfix">
+
+<div class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		<header class="post__header clearfix">
+			<h1 class="post__title">GIT</h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="post__meta-date" datetime="2011-02-16 12:10:57 &#43;0100 &#43;0100">February 16, 2011</time>
+				
+					(<time class="post__meta-date" datetime="2017-03-18 00:31:28 &#43;0100 &#43;0100">Last modified on March 18, 2017</time>)
+					
+				<span class="post__meta-categories meta-categories">
+					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+					<a class="meta-categories__link" href="/categories/developement" rel="category">developement</a></span>
+			</p>
+		</header>
+		
+		    <div id="toc" class="well col-md-4 col-sm-6" style="float: right;padding: 0.01em 10px;border-radius: 10px 0px 0px 10px;-moz-border-radius: 10px 0px 0px 10px;-webkit-border-radius: 10px 0px 0px 10px;border: 2px dotted #0040ff;">
+		    <nav id="TableOfContents">
+<ul>
+<li><a href="#submodules">Submodules</a>
+<ul>
+<li><a href="#adding-a-submodule-to-a-project">Adding a submodule to a project</a></li>
+<li><a href="#initialize-submodules-in-a-fresh-checkout">Initialize submodules in a fresh checkout</a></li>
+<li><a href="#fetch-changes-from-submodule">Fetch changes from submodule</a></li>
+</ul></li>
+<li><a href="#forking">Forking</a>
+<ul>
+<li><a href="#adding-upstream-to-your-fork">Adding upstream to your fork</a></li>
+</ul></li>
+<li><a href="#hosting-git-repositories">Hosting git repositories</a></li>
+<li><a href="#initialize-local-git-repository-and-create-origin-master">Initialize local git repository and create origin master</a></li>
+<li><a href="#clone-a-git-for-local-changes-that-can-be-pushed-again-to-origin-master">clone a git for local changes that can be pushed again to origin master</a></li>
+<li><a href="#remove-files-from-git">Remove files from git</a>
+<ul>
+<li><a href="#add-them-to-the-ignore-list">Add them to the ignore list</a>
+<ul>
+<li><a href="#ignores-for-mac-client">Ignores for mac client</a></li>
+<li><a href="#ignores-for-working-with-latex">Ignores for working with latex</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#upload-to-remote-master">Upload to remote master</a></li>
+<li><a href="#stay-in-sync-with-remote-repository">Stay in sync with remote repository</a></li>
+<li><a href="#add-changes">add changes</a></li>
+<li><a href="#create-local-branch-do-your-work-and-merge-it-back-to-local-master">create local branch, do your work and merge it back to local master</a></li>
+<li><a href="#show-me-all-branches">Show me all branches</a></li>
+<li><a href="#switch-branch">Switch branch</a></li>
+<li><a href="#show-me-changes-since-last-commit">Show me changes since last commit</a></li>
+<li><a href="#save-dirty-code-and-revert-back-to-head">Save dirty code and revert back to HEAD</a></li>
+<li><a href="#links">Links</a></li>
+</ul>
+</nav>
+		    </div>
+		
+		<div class="post__content clearfix">
+			<figure class="post__thumbnail">
+				<img src="//rac.su/img/logo/git.png" alt="GIT">
+			</figure>
+			<p>Some GIT commands I use and wanted to note for my own reference in case I don&rsquo;t use it anymore for some time and can&rsquo;t remember ;-)</p>
+
+<p></p>
+
+<h1 id="submodules">Submodules</h1>
+
+<h2 id="adding-a-submodule-to-a-project">Adding a submodule to a project</h2>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git submodule add &lt;insert.repo.uri&gt; destination/path</code></pre></div>
+
+<h2 id="initialize-submodules-in-a-fresh-checkout">Initialize submodules in a fresh checkout</h2>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git submodule init
+$ git submodule update</code></pre></div>
+
+<h2 id="fetch-changes-from-submodule">Fetch changes from submodule</h2>
+
+<p>Doing it for all existing submodules
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git submodule foreach git pull</code></pre></div>
+Doing it for only a specific submodule is standard git usage, you have to go to the root directory of the submodule and execute git pull or any other operation (including committing and pushing).</p>
+
+<h1 id="forking">Forking</h1>
+
+<h2 id="adding-upstream-to-your-fork">Adding upstream to your fork</h2>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git checkout master
+$ git remote add upstream &lt;insert.repo.uri&gt;
+$ git fetch upstream
+$ git rebase upstream/master</code></pre></div>
+
+<h1 id="hosting-git-repositories">Hosting git repositories</h1>
+
+<p>Here are some projects which help you to self host your environment</p>
+
+<ul>
+<li><a href="https://try.gitea.io/">https://try.gitea.io/</a></li>
+</ul>
+
+<h1 id="initialize-local-git-repository-and-create-origin-master">Initialize local git repository and create origin master</h1>
+
+<p>Go to the root directory you want for this repo and execute following commands
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">local$ git init</code></pre></div>
+Create the repo on your server
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">local$ ssh server
+server$ <span style="color:#a2f">cd</span> /path/to/git/root
+server$ mkdir newrepo.git <span style="color:#666">&amp;&amp;</span> <span style="color:#a2f">cd</span> newrepo.git
+server$ git --bare init
+server$ exit</code></pre></div>
+Add the origin master to your local git
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">local$ git remote add origin ssh://server/path/to/repo.git
+local$ git push origin master</code></pre></div></p>
+
+<h1 id="clone-a-git-for-local-changes-that-can-be-pushed-again-to-origin-master">clone a git for local changes that can be pushed again to origin master</h1>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">local$ git clone ssh://server/path/to/repo.git</code></pre></div>
+
+<h1 id="remove-files-from-git">Remove files from git</h1>
+
+<p>In this example it&rsquo;s the .DS_Store file created automatically on a mac</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">local$ find . -depth -name <span style="color:#b44">&#39;.DS_Store&#39;</span> -exec git rm --cached <span style="color:#b44">&#39;{}&#39;</span> <span style="color:#b62;font-weight:bold">\;</span> -print</code></pre></div>
+
+<h2 id="add-them-to-the-ignore-list">Add them to the ignore list</h2>
+
+<p>Execute this command in the root of the git directory
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">local$ <span style="color:#a2f">echo</span> <span style="color:#b44">&#34;.DS_Store&#34;</span> &gt;&gt; .gitignore
+local$ git add .gitignore
+local$ git commit -m <span style="color:#b44">&#34;.DS_Store removed and ignored&#34;</span></code></pre></div></p>
+
+<h3 id="ignores-for-mac-client">Ignores for mac client</h3>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">.DS_Store
+._*</code></pre></div>
+
+<h3 id="ignores-for-working-with-latex">Ignores for working with latex</h3>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">*.aux
+*.dvi
+*.ilg
+*.ind
+*.log
+*.lol
+*.out
+*.toc
+*.ps
+*.glo
+*.nlo
+*.ilg
+*.nls
+*.bbl
+*.blg</code></pre></div>
+
+<h1 id="upload-to-remote-master">Upload to remote master</h1>
+
+<p>If you have not added the origin yet, do this first
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">local$ git remote add origin ssh://server/path/to/repo.git</code></pre></div></p>
+
+<p>To push the files
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">local$ git push origin master</code></pre></div></p>
+
+<h1 id="stay-in-sync-with-remote-repository">Stay in sync with remote repository</h1>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">local$ git pull origin master</code></pre></div>
+
+<h1 id="add-changes">add changes</h1>
+
+<p>Add all changed / new files to the next commit
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">local$ git add .</code></pre></div>
+or as a synonym you can use
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">local$ git stage .</code></pre></div>
+Interactive session to choose which files to be added
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">local$ git add -i</code></pre></div></p>
+
+<h1 id="create-local-branch-do-your-work-and-merge-it-back-to-local-master">create local branch, do your work and merge it back to local master</h1>
+
+<p>New Branch from whatever branch you are in
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">local$ git branch task1</code></pre></div></p>
+
+<p>Do your changes and commit as usual.
+You can even switch branches in between.</p>
+
+<p>Switch to the master (or whatever branch you branched from)
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">local$ git checkout master</code></pre></div></p>
+
+<p>Merge your temporary branch into master
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">local$ git merge task1</code></pre></div></p>
+
+<p>Delete your temporary branch
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">local$ git branch -D task1</code></pre></div></p>
+
+<h1 id="show-me-all-branches">Show me all branches</h1>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">local$ git branch -a</code></pre></div>
+
+<h1 id="switch-branch">Switch branch</h1>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">local$ git checkout master</code></pre></div>
+
+<h1 id="show-me-changes-since-last-commit">Show me changes since last commit</h1>
+
+<p>To see the actual code / cleartext:
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">local$ git diff --cached</code></pre></div>
+or
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">local$ git diff --staged</code></pre></div></p>
+
+<p>More details and a nice graphic can be seen at <a href="http://365git.tumblr.com/post/474079664/whats-the-difference-part-1">http://365git.tumblr.com/post/474079664/whats-the-difference-part-1</a></p>
+
+<h1 id="save-dirty-code-and-revert-back-to-head">Save dirty code and revert back to HEAD</h1>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">local$ git stash --keep-index</code></pre></div>
+
+<p>To restore into the dirty code (merging it into your current state)
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">local$ git stash apply</code></pre></div></p>
+
+<p>Detailed description of the stash command can be found at <a href="http://www.kernel.org/pub/software/scm/git/docs/git-stash.html">http://www.kernel.org/pub/software/scm/git/docs/git-stash.html</a></p>
+
+<h1 id="links">Links</h1>
+
+<ul>
+<li><a href="http://help.github.com/removing-sensitive-data/">http://help.github.com/removing-sensitive-data/</a></li>
+<li><a href="http://www.uhlme.ch/artikel.php?artikel=git">http://www.uhlme.ch/artikel.php?artikel=git</a></li>
+<li><a href="http://www.kernel.org/pub/software/scm/git/docs/gittutorial.html">http://www.kernel.org/pub/software/scm/git/docs/gittutorial.html</a></li>
+<li><a href="https://gist.github.com/569530">https://gist.github.com/569530</a></li>
+<li><a href="http://www.kernel.org/pub/software/scm/git/docs/everyday.html">http://www.kernel.org/pub/software/scm/git/docs/everyday.html</a></li>
+<li><a href="http://365git.tumblr.com/post/474079664/whats-the-difference-part-1">http://365git.tumblr.com/post/474079664/whats-the-difference-part-1</a></li>
+<li><a href="http://linux.yyz.us/git-howto.html">http://linux.yyz.us/git-howto.html</a></li>
+<li><a href="http://cheat.errtheblog.com/s/git">http://cheat.errtheblog.com/s/git</a></li>
+<li><a href="http://progit.org/book/">http://progit.org/book/</a></li>
+</ul>
+		</div>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="/tags/scm/" rel="tag">SCM</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/git/" rel="tag">GIT</a></li>
+	</ul>
+</div>
+	</article>
+	
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Michel Racic avatar" src="//rac.su/img/rac-300x300.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About Michel Racic</span>
+	</div>
+	<div class="authorbox__description">
+		I’m a coding and technology freak. I finished once my bachelor of engineering in computer science or on german “Dipl. Ing.” and currently I’m mostly coding in Java as main language besides some stuff in C, C&#43;&#43;, C#, HTML, JS, … - In my day job I work as a Software Engineer in Test and deal with all kind of Software from Native over Web into Mainframe where I use existing tools or write my own testing apps or libraries and the Frameworks around that they can be used in the most efficient way.
+	</div>
+</div>
+	
+<nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<div class="post-nav__item post-nav__item--prev col-1-2">
+		<a class="post-nav__link" href="//rac.su/libs/sensirion-sdp3x-driver/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">Sensirion SDP3x Arduino driver</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next col-1-2">
+		<a class="post-nav__link" href="//rac.su/security/world-writeable-files/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">Scanning a Filesystem for files with weak restrictions</p></a>
+	</div>
+</nav>
+	
+<div class="comments">
+	<div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "rac-su" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+</div>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="//rac.su/" />
+	</form>
+</div>
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">Recent Posts</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/project/makezurich-pakman/">MakeZurich - PakMan</a></li>
+			<li class="widget__item"><a class="widget__link" href="/project/makezurich-18-badge/">MakeZurich 2018 Badge</a></li>
+			<li class="widget__item"><a class="widget__link" href="/project/nina-w102-minimal-breakout/">uBlox NINA-W102 minimal breakout</a></li>
+			<li class="widget__item"><a class="widget__link" href="/project/makezurich-mobifloc/">MakeZurich - MoBiFloC</a></li>
+			<li class="widget__item"><a class="widget__link" href="/libs/sensirion-sdp3x-driver/">Sensirion SDP3x Arduino driver</a></li>
+			<li class="widget__item"><a class="widget__link" href="/libs/">Libs</a></li>
+			<li class="widget__item"><a class="widget__link" href="/project/">Projects</a></li>
+		</ul>
+	</div>
+</div>
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">Categories</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="//rac.su/categories/arduino">Arduino</a></li>
+			<li class="widget__item"><a class="widget__link" href="//rac.su/categories/developement">Developement</a></li>
+			<li class="widget__item"><a class="widget__link" href="//rac.su/categories/howto">Howto</a></li>
+			<li class="widget__item"><a class="widget__link" href="//rac.su/categories/library">Library</a></li>
+			<li class="widget__item"><a class="widget__link" href="//rac.su/categories/links">Links</a></li>
+		</ul>
+	</div>
+</div>
+	
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/administration" title="administration">administration</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/apache" title="apache">apache</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/arduino" title="arduino">arduino</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/compile" title="compile">compile</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/development" title="development">development</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/firebase" title="firebase">firebase</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/friends" title="friends">friends</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/fun" title="fun">fun</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/git" title="git">git</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/google" title="google">google</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/hackathon" title="hackathon">hackathon</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/hacking" title="hacking">hacking</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/hosting" title="hosting">hosting</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/hugo" title="hugo">hugo</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/java" title="java">java</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/linux" title="linux">linux</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/lorawan" title="lorawan">lorawan</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/programming" title="programming">programming</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/pwa" title="pwa">pwa</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/scm" title="scm">scm</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/searching" title="searching">searching</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/security" title="security">security</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/sensor" title="sensor">sensor</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/serviceworker" title="serviceworker">serviceworker</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/shell" title="shell">shell</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/ssl" title="ssl">ssl</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/witzig" title="witzig">witzig</a>
+	</div>
+</div>
+</aside>
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2018 Michel Racic.<span style="float: right;"><a style="cursor: default; color: #3b3b3b;" href="/π">π</a></span></p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-92066434-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Projects on RAC&#39;s notepad</title>
+    <link>//rac.su/project/</link>
+    <description>Recent content in Projects on RAC&#39;s notepad</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 02 Jul 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="//rac.su/project/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>MakeZurich - PakMan</title>
+      <link>//rac.su/project/makezurich-pakman/</link>
+      <pubDate>Mon, 02 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>//rac.su/project/makezurich-pakman/</guid>
+      <description>&lt;p&gt;Project entry for the &lt;a href=&#34;https://makezurich.ch&#34;&gt;MakeZurich&lt;/a&gt; 2018 Hackathon.
+A delivery box which monitors the environment of it&amp;rsquo;s content and send an alarm via LoRaWAN in case a threshold breach gets detected.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>MakeZurich 2018 Badge</title>
+      <link>//rac.su/project/makezurich-18-badge/</link>
+      <pubDate>Sun, 27 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>//rac.su/project/makezurich-18-badge/</guid>
+      <description>&lt;p&gt;You received your &lt;a href=&#34;https://makezurich.ch&#34;&gt;MakeZurich vol. II&lt;/a&gt; participants badge and want to know more about it?&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>uBlox NINA-W102 minimal breakout</title>
+      <link>//rac.su/project/nina-w102-minimal-breakout/</link>
+      <pubDate>Sun, 27 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>//rac.su/project/nina-w102-minimal-breakout/</guid>
+      <description>&lt;p&gt;While working on the &lt;a href=&#34;//rac.su/project/makezurich-18-badge&#34;&gt;badge design for MakeZurich 2018&lt;/a&gt;, I had the need to first make a breakout for the NINA-W102 we got from &lt;a href=&#34;https://www.u-blox.com&#34;&gt;ublox&lt;/a&gt; to see what is possible, do some tryouts with different components like the display and start developing drivers and firmware we need for it. This is the outcome of it and as we did go on with the badge design, we switched from having a single-board badge to a modular badge where the modules can be reused standalone in a project. Hence on the final badge design you can reuse the display and the NINA-W102 module in your hacks and with a little bit of desoldering you can reuse the sensor module (which we got from &lt;a href=&#34;https://www.sensirion.com&#34;&gt;Sensirion&lt;/a&gt;) as well.
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>MakeZurich - MoBiFloC</title>
+      <link>//rac.su/project/makezurich-mobifloc/</link>
+      <pubDate>Sat, 04 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>//rac.su/project/makezurich-mobifloc/</guid>
+      <description>&lt;p&gt;Project entry for the &lt;a href=&#34;https://makezurich.ch&#34;&gt;MakeZurich&lt;/a&gt; 2017 Hackathon.&lt;/p&gt;
+
+&lt;p&gt;A cheap and portable bike commuter flow counter node to enhance the existing sensor network. This will also be helpful to quickly bring up nodes at the right place to evaluate new routes and how they are used.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

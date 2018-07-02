@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Shell on RAC&#39;s notepad</title>
+    <link>//rac.su/tags/shell/</link>
+    <description>Recent content in Shell on RAC&#39;s notepad</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 05 Jun 2008 14:45:52 +0100</lastBuildDate>
+    
+	<atom:link href="//rac.su/tags/shell/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Scanning a Filesystem for files with weak restrictions</title>
+      <link>//rac.su/security/world-writeable-files/</link>
+      <pubDate>Thu, 05 Jun 2008 14:45:52 +0100</pubDate>
+      
+      <guid>//rac.su/security/world-writeable-files/</guid>
+      <description>&lt;p&gt;Howto find world writable files that could be attacked on your server?&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

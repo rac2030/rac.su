@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on RAC&#39;s notepad</title>
+    <link>//rac.su/categories/</link>
+    <description>Recent content in Categories on RAC&#39;s notepad</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 02 Jul 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="//rac.su/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Arduino</title>
+      <link>//rac.su/categories/arduino/</link>
+      <pubDate>Mon, 02 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>//rac.su/categories/arduino/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Developement</title>
+      <link>//rac.su/categories/developement/</link>
+      <pubDate>Wed, 16 Feb 2011 12:10:57 +0100</pubDate>
+      
+      <guid>//rac.su/categories/developement/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Howto</title>
+      <link>//rac.su/categories/howto/</link>
+      <pubDate>Sun, 12 Mar 2017 17:35:53 +0100</pubDate>
+      
+      <guid>//rac.su/categories/howto/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Library</title>
+      <link>//rac.su/categories/library/</link>
+      <pubDate>Sat, 04 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>//rac.su/categories/library/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Links</title>
+      <link>//rac.su/categories/links/</link>
+      <pubDate>Sat, 11 Mar 2017 00:45:10 +0100</pubDate>
+      
+      <guid>//rac.su/categories/links/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

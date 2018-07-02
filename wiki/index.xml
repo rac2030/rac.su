@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Wikis on RAC&#39;s notepad</title>
+    <link>//rac.su/wiki/</link>
+    <description>Recent content in Wikis on RAC&#39;s notepad</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 04 Jan 2008 14:35:41 +0000</lastBuildDate>
+    
+	<atom:link href="//rac.su/wiki/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Using Google</title>
+      <link>//rac.su/wiki/using-google/</link>
+      <pubDate>Fri, 04 Jan 2008 14:35:41 +0000</pubDate>
+      
+      <guid>//rac.su/wiki/using-google/</guid>
+      <description>&lt;p&gt;no comments&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Apache Force SSL on vhost</title>
+      <link>//rac.su/wiki/apache-force-ssl-on-vhost/</link>
+      <pubDate>Mon, 31 Dec 2007 11:44:11 +0000</pubDate>
+      
+      <guid>//rac.su/wiki/apache-force-ssl-on-vhost/</guid>
+      <description>&lt;p&gt;Howto configure Apache to redirect all http requests to the SSL version of the site.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Apache Wildcard Domains</title>
+      <link>//rac.su/wiki/apache-wildcard-domains/</link>
+      <pubDate>Mon, 31 Dec 2007 11:27:23 +0000</pubDate>
+      
+      <guid>//rac.su/wiki/apache-wildcard-domains/</guid>
+      <description>&lt;p&gt;Notizen zum konfigurieren von Wildcard Domains in Apache.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

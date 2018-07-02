@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Funs on RAC&#39;s notepad</title>
+    <link>//rac.su/fun/</link>
+    <description>Recent content in Funs on RAC&#39;s notepad</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 28 Dec 2007 00:23:10 +0000</lastBuildDate>
+    
+	<atom:link href="//rac.su/fun/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Out of Office Meldungen</title>
+      <link>//rac.su/fun/out-of-office-meldungen/</link>
+      <pubDate>Fri, 28 Dec 2007 00:23:10 +0000</pubDate>
+      
+      <guid>//rac.su/fun/out-of-office-meldungen/</guid>
+      <description>&lt;p&gt;Ein paar lustige OOO Meldungen.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

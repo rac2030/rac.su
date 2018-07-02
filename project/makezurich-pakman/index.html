@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MakeZurich - PakMan</title>
+<meta name="description" content="Just a space where I write down stuff for my own reuse...">
+<meta name="generator" content="Hugo 0.41" />
+<meta property="og:title" content="MakeZurich - PakMan" />
+<meta property="og:description" content="Project entry for the MakeZurich 2018 Hackathon.
+A delivery box which monitors the environment of it&rsquo;s content and send an alarm via LoRaWAN in case a threshold breach gets detected.
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="//rac.su/project/makezurich-pakman/" />
+
+
+
+<meta property="article:published_time" content="2018-07-02T00:00:00&#43;00:00"/>
+
+<meta property="article:modified_time" content="2018-07-03T01:13:13&#43;02:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+<link rel="stylesheet" href="//rac.su/css/style.css" type="text/css" media="all" />
+<script type="text/javascript" src="//rac.su/js/scripts.js"></script>
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="//rac.su/" title="RAC&#39;s notepad" rel="home">
+						<h1 class="logo__title">RAC&#39;s notepad</h1>
+						<h2 class="logo__tagline">Just some braindumps</h2>
+					</a>
+				</div>
+			</div>
+			<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item "><a class="menu__link" href="/project/">PROJECTS</a></li>
+		<li class="menu__item "><a class="menu__link" href="/libs/">LIBRARIES</a></li>
+		<li class="menu__item "><a class="menu__link" href="/socialstream/">SOCIAL STREAM</a></li>
+		<li class="menu__item "><a class="menu__link" href="/links/">BOOKMARKS</a></li>
+	</ul>
+</nav>
+		</header>
+		<div class="wrapper clearfix">
+
+<div class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		<header class="post__header clearfix">
+			<h1 class="post__title">MakeZurich - PakMan</h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="post__meta-date" datetime="2018-07-02 00:00:00 &#43;0000 UTC">July 02, 2018</time>
+				
+					(<time class="post__meta-date" datetime="2018-07-03 01:13:13 &#43;0200 &#43;0200">Last modified on July 03, 2018</time>)
+					
+				<span class="post__meta-categories meta-categories">
+					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+					<a class="meta-categories__link" href="/categories/arduino" rel="category">Arduino</a></span>
+			</p>
+		</header>
+		
+		    <div id="toc" class="well col-md-4 col-sm-6" style="float: right;padding: 0.01em 10px;border-radius: 10px 0px 0px 10px;-moz-border-radius: 10px 0px 0px 10px;-webkit-border-radius: 10px 0px 0px 10px;border: 2px dotted #0040ff;">
+		    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#challenge">Challenge</a></li>
+<li><a href="#idea">Idea</a></li>
+<li><a href="#used-hardware">Used Hardware</a></li>
+<li><a href="#team-members">Team members</a></li>
+<li><a href="#what-we-hacked-together">What we hacked together</a></li>
+<li><a href="#hacking-the-miromico-sos-button">Hacking the Miromico SOS Button</a></li>
+<li><a href="#source-code">Source code</a></li>
+</ul></li>
+</ul>
+</nav>
+		    </div>
+		
+		<div class="post__content clearfix">
+			<figure class="post__thumbnail">
+				<img src="//rac.su/project/makezurich-mobifloc/MakeZurich-logo.png" alt="MakeZurich - PakMan">
+			</figure>
+			<p>Project entry for the <a href="https://makezurich.ch">MakeZurich</a> 2018 Hackathon.
+A delivery box which monitors the environment of it&rsquo;s content and send an alarm via LoRaWAN in case a threshold breach gets detected.</p>
+
+<p></p>
+
+<h2 id="challenge">Challenge</h2>
+
+
+<figure>
+    
+        <img src="challenge-4.png" />
+    
+    
+</figure>
+
+
+<p>Due to the fact that the challenge owner was absent all the time and there was not more information, we came up with our own usecase.</p>
+
+<h2 id="idea">Idea</h2>
+
+<p>Challenge accepted&hellip; but on what should we focus?</p>
+
+<p>Let&rsquo;s take the use case of hospital transport. Let&rsquo;s assume a medical transport has to be done between 2 Hospitals or just from a supplier to the receiver which needs it urgently. The content of the box which the courier needs to transport is sensitive to its environment, in our case we made it sensitive to temperature, humidity and VOCs (volatile organic compounds). As there is a time pressure, the courier needs to bring that packet as fast as possible from A to B. If B receives it and see&rsquo;s that it is contaminated and needs to reorder another courier to bring a replacement, he will loose precious time which in case of a hospital could be live saving minutes. If we would have a box that has various sensors inside, control logic for realtime checking and an alerting function which lets the receiver know as soon as it is contaminated without waiting for the courier to arrive, it may be life saving for the receiver as he can go and order a replacement already.</p>
+
+<p>To add some more fancyness to the thing, we wanted to create a little web application that uses bluetooth from the browser to connect to the teensy and configure it remotely. This would allow for setting the threshold for the 3 sensors (upper and lower) as well as seeing the statistics of the whole transport when it arrives.</p>
+
+<h2 id="used-hardware">Used Hardware</h2>
+
+<p>From the <a href="https://makezurich.ch/box/4/">MakeZurich kit</a>, we used:</p>
+
+<ul>
+<li><a href="https://www.thethingsnetwork.org/docs/devices/uno/">The Things Uno</a> for some tryouts and as a plan B LoRaWAN interface</li>
+<li>The breadboard</li>
+<li>Unsoldered the <a href="https://github.com/rac2030/IoT-conference-badge/blob/master/hardware/sensors-module-board-rev.0.1.0.pdf">Sensor module</a> from the badge</li>
+<li>The Box itself as a container</li>
+</ul>
+
+<p>Additionally, we used:</p>
+
+<ul>
+<li>Duck tape (*hint look at the backside of the NINA breakout module on the badge)</li>
+<li>5V Emergency battery pack for cellphones</li>
+<li><a href="https://www.digikey.ch/en/product-highlight/s/sparkfun/teensy-3-6-development-boards">Teensy 3.6</a></li>
+<li><a href="https://components101.com/wireless/hc-05-bluetooth-module">HC-05 Bluetooth module</a></li>
+<li><a href="http://www.miromico.ch/fmlr-lorawan-modules.html">Miromico SOS Button</a> for hacking into it to trigger LoRaWAN messages</li>
+</ul>
+
+<h2 id="team-members">Team members</h2>
+
+<p>The team was formed ad-hoc on the MakeZurich event and consistet of <a href="http://www.nexus-computing.ch">Manuel Di Cerbo</a>, <a href="http://kumin.ch">Tony Kümin</a> and me (<a href="http://racic.ch">Michel Racic</a>).</p>
+
+<h2 id="what-we-hacked-together">What we hacked together</h2>
+
+<p>Given I had my personal hackathon the weeks before <a href="https://makezurich.ch">MakeZurich</a> designing the <a href="/project/makezurich-18-badge">badge</a> and Tony (maker of the <a href="/mz18">Treasure hunt</a>) as well as Manuel had some other work to do, we only started late night on saturday and basically made the project in 2 - 3 hours on sunday.</p>
+
+
+<figure>
+    
+        <img src="the-hack.jpeg" alt="Final box" />
+    
+    
+    <figcaption>
+        <p>
+        Final box
+        
+            
+        
+        </p> 
+    </figcaption>
+    
+</figure>
+
+
+<p>What you sadly don&rsquo;t see in the picture is the hacked SOS button and I totally forgot to take some pictures on-site. Well I have a post mortem picture of the opened button and can tell a bit what I found out and how we used it. Sorry <a href="miromico.ch">Miromico</a> that we destroyed it in the process but fiddling with the timeline I broke the button cable so the only thing left is the actual board.</p>
+
+<h2 id="hacking-the-miromico-sos-button">Hacking the Miromico SOS Button</h2>
+
+<p>This was my main goal and I had most fun fiddling around with it to see whats possible. Why? Just because&hellip; you know&hellip;. what could be more fun than hacking and repurposing something you find onsite at a hackathon to make something else with it.</p>
+
+<p>Yes, next time it would be fun to directly use a <a href="http://www.miromico.ch/fmlr-lorawan-modules.html">FMLR module</a> from Miromico, maybe they want to sponsor next years badge and we directly include it with some other basic stuff to make the badge the real base for all projects.</p>
+
+
+<figure>
+    
+        <img src="sosbutton-overview-labeled.png" alt="Interfacing the button PCB" />
+    
+    
+    <figcaption>
+        <p>
+        Interfacing the button PCB
+        
+            
+        
+        </p> 
+    </figcaption>
+    
+</figure>
+
+
+<p>Trough the programmer interface, I tried to exploit the AT commands to somehow inject a payload. The thing we found which looked promising was the set voltage command but after some tests, even it accepted the set command with OK, it did just report the actual battery voltage.</p>
+
+<p>I did find some info in <a href="http://www.miromico.ch/tl_files/downloads/flyer/FMLR_AT_Protocol.pdf">http://www.miromico.ch/tl_files/downloads/flyer/FMLR_AT_Protocol.pdf</a> but what I did see was not the exact same commands implemented, so I guess this is for a newer or just different firmware for the STM32 that is inside.</p>
+
+<p>We then decided to use just the button itself, pined one side to the ground and the other to a GPIO which we set to high.</p>
+
+<p>The rest of the code and how to interface the sensor module you can see in the source but to finish it off, a lora function that takes a custom delay as parameter is used to set the GPIO to low for a certain time. As we found out after our first test with having a 100ms delay was, that we can generate different payloads as event type using different delays. We have seen 3 different payloads (0, 2 and 4) but we haven&rsquo;t drilled down more as there are probably more timings which means more different states we could send.</p>
+
+<p>On the other side, we did setup <a href="https://hivemind.ch">Hivemind</a> using the sponsored MakeZurich account which did receive those packets nearly in realtime.
+
+<figure>
+    
+        <img src="hivemind-data.png" alt="Hivemind platform showing LoRa packets received" />
+    
+    
+    <figcaption>
+        <p>
+        Hivemind platform showing LoRa packets received
+        
+            
+        
+        </p> 
+    </figcaption>
+    
+</figure>
+</p>
+
+<p>
+<figure class="floatright30">
+    
+        <img src="sosbutton-back.jpg" />
+    
+    
+</figure>
+
+Shortly before the presentation, what needs to run out will run out and the battery died. Having no replacement batteries for that 3V coin cell, I just soldered some cables to the battery holder on the PCB and we did power it from the teensy.</p>
+
+<h2 id="source-code">Source code</h2>
+
+<p>The Arduino source is available as gist on GitHub @
+<a href="https://gist.github.com/rac2030/cad175b2b7370aac7197be80f413b6d1">https://gist.github.com/rac2030/cad175b2b7370aac7197be80f413b6d1</a></p>
+		</div>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="/tags/arduino/" rel="tag">arduino</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/hackathon/" rel="tag">hackathon</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/lorawan/" rel="tag">LoraWAN</a></li>
+	</ul>
+</div>
+	</article>
+	
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Michel Racic avatar" src="//rac.su/img/rac-300x300.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About Michel Racic</span>
+	</div>
+	<div class="authorbox__description">
+		I’m a coding and technology freak. I finished once my bachelor of engineering in computer science or on german “Dipl. Ing.” and currently I’m mostly coding in Java as main language besides some stuff in C, C&#43;&#43;, C#, HTML, JS, … - In my day job I work as a Software Engineer in Test and deal with all kind of Software from Native over Web into Mainframe where I use existing tools or write my own testing apps or libraries and the Frameworks around that they can be used in the most efficient way.
+	</div>
+</div>
+	
+<nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<div class="post-nav__item post-nav__item--next col-1-2">
+		<a class="post-nav__link" href="//rac.su/project/makezurich-18-badge/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">MakeZurich 2018 Badge</p></a>
+	</div>
+</nav>
+	
+<div class="comments">
+	<div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "rac-su" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+</div>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="//rac.su/" />
+	</form>
+</div>
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">Recent Posts</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/project/makezurich-pakman/">MakeZurich - PakMan</a></li>
+			<li class="widget__item"><a class="widget__link" href="/project/makezurich-18-badge/">MakeZurich 2018 Badge</a></li>
+			<li class="widget__item"><a class="widget__link" href="/project/nina-w102-minimal-breakout/">uBlox NINA-W102 minimal breakout</a></li>
+			<li class="widget__item"><a class="widget__link" href="/project/makezurich-mobifloc/">MakeZurich - MoBiFloC</a></li>
+			<li class="widget__item"><a class="widget__link" href="/libs/sensirion-sdp3x-driver/">Sensirion SDP3x Arduino driver</a></li>
+			<li class="widget__item"><a class="widget__link" href="/libs/">Libs</a></li>
+			<li class="widget__item"><a class="widget__link" href="/project/">Projects</a></li>
+		</ul>
+	</div>
+</div>
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">Categories</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="//rac.su/categories/arduino">Arduino</a></li>
+			<li class="widget__item"><a class="widget__link" href="//rac.su/categories/developement">Developement</a></li>
+			<li class="widget__item"><a class="widget__link" href="//rac.su/categories/howto">Howto</a></li>
+			<li class="widget__item"><a class="widget__link" href="//rac.su/categories/library">Library</a></li>
+			<li class="widget__item"><a class="widget__link" href="//rac.su/categories/links">Links</a></li>
+		</ul>
+	</div>
+</div>
+	
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/administration" title="administration">administration</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/apache" title="apache">apache</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/arduino" title="arduino">arduino</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/compile" title="compile">compile</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/development" title="development">development</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/firebase" title="firebase">firebase</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/friends" title="friends">friends</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/fun" title="fun">fun</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/git" title="git">git</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/google" title="google">google</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/hackathon" title="hackathon">hackathon</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/hacking" title="hacking">hacking</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/hosting" title="hosting">hosting</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/hugo" title="hugo">hugo</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/java" title="java">java</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/linux" title="linux">linux</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/lorawan" title="lorawan">lorawan</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/programming" title="programming">programming</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/pwa" title="pwa">pwa</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/scm" title="scm">scm</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/searching" title="searching">searching</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/security" title="security">security</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/sensor" title="sensor">sensor</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/serviceworker" title="serviceworker">serviceworker</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/shell" title="shell">shell</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/ssl" title="ssl">ssl</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/witzig" title="witzig">witzig</a>
+	</div>
+</div>
+</aside>
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2018 Michel Racic.<span style="float: right;"><a style="cursor: default; color: #3b3b3b;" href="/π">π</a></span></p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-92066434-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+</body>
+</html>

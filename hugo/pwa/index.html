@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enabling offline usage of a Hugo site (PWA)</title>
+<meta name="description" content="Just a space where I write down stuff for my own reuse...">
+<meta name="generator" content="Hugo 0.41" />
+<meta property="og:title" content="Enabling offline usage of a Hugo site (PWA)" />
+<meta property="og:description" content="PWA (Progressive Web Apps) are pretty cool for certain use cases like users having flaky connections (e.g. from mobiles) or just to reduce the initial loading time (after the first visit to the page). I document my exercise adding offline capability to a small single page site with no frequent updates that I built with Hugo and the Dimension theme.
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="//rac.su/hugo/pwa/" />
+
+
+
+<meta property="article:published_time" content="2017-03-12T17:35:53&#43;01:00"/>
+
+<meta property="article:modified_time" content="2017-03-19T00:50:48&#43;01:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+<link rel="stylesheet" href="//rac.su/css/style.css" type="text/css" media="all" />
+<script type="text/javascript" src="//rac.su/js/scripts.js"></script>
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="//rac.su/" title="RAC&#39;s notepad" rel="home">
+						<h1 class="logo__title">RAC&#39;s notepad</h1>
+						<h2 class="logo__tagline">Just some braindumps</h2>
+					</a>
+				</div>
+			</div>
+			<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item "><a class="menu__link" href="/project/">PROJECTS</a></li>
+		<li class="menu__item "><a class="menu__link" href="/libs/">LIBRARIES</a></li>
+		<li class="menu__item "><a class="menu__link" href="/socialstream/">SOCIAL STREAM</a></li>
+		<li class="menu__item "><a class="menu__link" href="/links/">BOOKMARKS</a></li>
+	</ul>
+</nav>
+		</header>
+		<div class="wrapper clearfix">
+
+<div class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		<header class="post__header clearfix">
+			<h1 class="post__title">Enabling offline usage of a Hugo site (PWA)</h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="post__meta-date" datetime="2017-03-12 17:35:53 &#43;0100 &#43;0100">March 12, 2017</time>
+				
+					(<time class="post__meta-date" datetime="2017-03-19 00:50:48 &#43;0100 &#43;0100">Last modified on March 19, 2017</time>)
+					
+				<span class="post__meta-categories meta-categories">
+					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+					<a class="meta-categories__link" href="/categories/howto" rel="category">howto</a></span>
+			</p>
+		</header>
+		
+		    <div id="toc" class="well col-md-4 col-sm-6" style="float: right;padding: 0.01em 10px;border-radius: 10px 0px 0px 10px;-moz-border-radius: 10px 0px 0px 10px;-webkit-border-radius: 10px 0px 0px 10px;border: 2px dotted #0040ff;">
+		    <nav id="TableOfContents">
+<ul>
+<li><a href="#basic-tools-i-used">Basic tools I used</a></li>
+<li><a href="#gulp-build-file">Gulp build file</a></li>
+<li><a href="#adding-initializer-to-template">Adding initializer to template</a></li>
+<li><a href="#results">Results</a></li>
+<li><a href="#other-resources">Other resources</a></li>
+</ul>
+</nav>
+		    </div>
+		
+		<div class="post__content clearfix">
+			<figure class="post__thumbnail">
+				<img src="//rac.su/hugo/pwa/offline-dino.jpg" alt="Enabling offline usage of a Hugo site (PWA)">
+			</figure>
+			<p>PWA (Progressive Web Apps) are pretty cool for certain use cases like users having flaky connections (e.g. from mobiles) or just to reduce the initial loading time (after the first visit to the page). I document my exercise adding offline capability to a small single page site with no frequent updates that I built with Hugo and the Dimension theme.
+</p>
+
+<p>One thing to note is that ServiceWorkers only work when you server over SSL with a valid certificate. Also
+you have to keep in mind that this only works on modern browsers that stick to the PWA standards. Chrome and Microsoft Edge work (both are contributors to this standard) and for mobiles on Android it works pretty well. Users with iOS are out of luck as Safari doesn&rsquo;t support it and Safari is the only allowed engine to be used on iOS mobile devices (yes all the browser vendors that have an iOS app can&rsquo;t use their usual browser engine but can only have an overlay and need to use Safaris engine to process and render pages).
+Nevertheless, you don&rsquo;t have to be bothered by this fact as the Service Worker in this case is only used for precaching and this means if it doesn&rsquo;t run, every request will be done as usual to the network, only users with PWA capable browsers will actually get a benefit out of it as it loads way faster on subsequent loads.</p>
+
+<p>Note that I only applied this to a small Hugo site which is even compiled into a single page app, hence I just put all resources into precache. I would&rsquo;nt use this strategy out of the box with a bigger site like a blog where you have lots of content. That is a future task I want to look in to get a service worker generator that adds some files (mainly static and a landing page) into precache and only caches other resources on first access to have a dynamic cache, for this I also need to find a strategy for updates as the precache has md5 hashes mapped in the service worker to know when to purge it and the Service Worker gets loaded on every access and updated from the network. Side effect of this is that every change is only visible after a reload of the page.</p>
+
+<h1 id="basic-tools-i-used">Basic tools I used</h1>
+
+<p><code>NodeJS</code> needs to be installed and usable in your system, additional the <code>gulp</code>, <code>sw-precache</code> and <code>run-sequence</code> modules need to be installed.
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#080;font-style:italic">#/bin/sh
+</span><span style="color:#080;font-style:italic"></span><span style="color:#a2f">echo</span> <span style="color:#b44">&#34;Initialize build tools, needs working NPM installation to run&#34;</span>
+npm install --save-dev sw-precache
+npm install --save-dev run-sequence
+npm install gulp-batch
+npm install gulp</code></pre></div></p>
+
+<h1 id="gulp-build-file">Gulp build file</h1>
+
+<p>I created a gulpfile.js in the root of the Hugo project with the following content:
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a2f;font-weight:bold">var</span> gulp <span style="color:#666">=</span> require(<span style="color:#b44">&#39;gulp&#39;</span>);
+<span style="color:#a2f;font-weight:bold">var</span> gutil <span style="color:#666">=</span> require(<span style="color:#b44">&#39;gulp-util&#39;</span>);
+<span style="color:#a2f;font-weight:bold">var</span> exec <span style="color:#666">=</span> require(<span style="color:#b44">&#39;child_process&#39;</span>).execSync;
+<span style="color:#a2f;font-weight:bold">var</span> runSequence <span style="color:#666">=</span> require(<span style="color:#b44">&#39;run-sequence&#39;</span>);
+
+gulp.task(<span style="color:#b44">&#39;generate-service-worker&#39;</span>, <span style="color:#a2f;font-weight:bold">function</span>(callback) {
+  <span style="color:#a2f;font-weight:bold">var</span> path <span style="color:#666">=</span> require(<span style="color:#b44">&#39;path&#39;</span>);
+  <span style="color:#a2f;font-weight:bold">var</span> swPrecache <span style="color:#666">=</span> require(<span style="color:#b44">&#39;sw-precache&#39;</span>);
+  <span style="color:#a2f;font-weight:bold">var</span> rootDir <span style="color:#666">=</span> <span style="color:#b44">&#39;public&#39;</span>;
+
+  swPrecache.write(path.join(rootDir, <span style="color:#b44">&#39;sw.js&#39;</span>), {
+    <span style="color:#080;font-style:italic">/** This is the place where you could change / make the patterns on which files should be going into precache **/</span>
+    staticFileGlobs<span style="color:#666">:</span> [rootDir <span style="color:#666">+</span> <span style="color:#b44">&#39;/**/*.{js,html,css,png,jpg,gif,eot,svg,ttf,woff,woff2,otf}&#39;</span>],
+    stripPrefix<span style="color:#666">:</span> rootDir
+  }, callback);
+});
+
+gulp.task(<span style="color:#b44">&#39;hugo:build&#39;</span>, <span style="color:#a2f;font-weight:bold">function</span>() {
+	<span style="color:#a2f;font-weight:bold">var</span> result <span style="color:#666">=</span> exec(<span style="color:#b44">&#34;hugo&#34;</span>, {encoding<span style="color:#666">:</span> <span style="color:#b44">&#39;utf-8&#39;</span>});
+    gutil.log(<span style="color:#b44">&#39;hugo:build: \n&#39;</span> <span style="color:#666">+</span> result);
+    <span style="color:#a2f;font-weight:bold">return</span> result;
+});
+
+gulp.task(<span style="color:#b44">&#39;hugo:builddrafts&#39;</span>, <span style="color:#a2f;font-weight:bold">function</span>() {
+  <span style="color:#a2f;font-weight:bold">var</span> result <span style="color:#666">=</span> exec(<span style="color:#b44">&#34;hugo --buildDrafts&#34;</span>, {encoding<span style="color:#666">:</span> <span style="color:#b44">&#39;utf-8&#39;</span>});
+    gutil.log(<span style="color:#b44">&#39;hugo:builddrafts: \n&#39;</span> <span style="color:#666">+</span> result);
+    <span style="color:#a2f;font-weight:bold">return</span> result;
+});
+
+gulp.task(<span style="color:#b44">&#39;hugo:clean&#39;</span>, <span style="color:#a2f;font-weight:bold">function</span>() {
+	<span style="color:#a2f;font-weight:bold">var</span> result <span style="color:#666">=</span> exec(<span style="color:#b44">&#34;rm -rf public/&#34;</span>, {encoding<span style="color:#666">:</span> <span style="color:#b44">&#39;utf-8&#39;</span>});
+    gutil.log(<span style="color:#b44">&#39;hugo:clean: \n&#39;</span> <span style="color:#666">+</span> result);
+    <span style="color:#a2f;font-weight:bold">return</span> result;
+});
+
+gulp.task(<span style="color:#b44">&#39;build&#39;</span>, <span style="color:#a2f;font-weight:bold">function</span>(callback) {
+  runSequence(<span style="color:#b44">&#39;hugo:clean&#39;</span>,
+              <span style="color:#b44">&#39;hugo:build&#39;</span>,
+              <span style="color:#b44">&#39;generate-service-worker&#39;</span>,
+              callback);
+});
+
+gulp.task(<span style="color:#b44">&#39;build:drafts&#39;</span>, <span style="color:#a2f;font-weight:bold">function</span>(callback) {
+  runSequence(<span style="color:#b44">&#39;hugo:clean&#39;</span>,
+              <span style="color:#b44">&#39;hugo:builddrafts&#39;</span>,
+              <span style="color:#b44">&#39;generate-service-worker&#39;</span>,
+              callback);
+});
+
+gulp.task(<span style="color:#b44">&#39;deploy:dev&#39;</span>, <span style="color:#a2f;font-weight:bold">function</span>(callback) {
+  runSequence(<span style="color:#b44">&#39;build:drafts&#39;</span>,
+              <span style="color:#b44">&#39;deploy:dev:rsync&#39;</span>,
+              callback);
+});
+
+gulp.task(<span style="color:#b44">&#39;deploy:prod&#39;</span>, <span style="color:#a2f;font-weight:bold">function</span>(callback) {
+  runSequence(<span style="color:#b44">&#39;build&#39;</span>,
+              <span style="color:#b44">&#39;deploy:firebase&#39;</span>,
+              callback);
+});
+
+gulp.task(<span style="color:#b44">&#39;deploy:dev:rsync&#39;</span>, <span style="color:#a2f;font-weight:bold">function</span>() {
+  <span style="color:#080;font-style:italic">/** Change the rsync task accordingly to your dev deploy **/</span>
+  <span style="color:#080;font-style:italic">/** I mainly used this as firebase doesn&#39;t allow restriction on static files and this server is .htaccess protected so the people that need can have a short look prior to prod deploy **/</span>
+  <span style="color:#a2f;font-weight:bold">var</span> result <span style="color:#666">=</span> exec(<span style="color:#b44">&#34;rsync -rv --update --delete public rac@your.ssh.server:/var/www/rac/dev.something/&#34;</span>, {encoding<span style="color:#666">:</span> <span style="color:#b44">&#39;utf-8&#39;</span>});
+    gutil.log(<span style="color:#b44">&#39;deploy:dev: \n&#39;</span> <span style="color:#666">+</span> result);
+    <span style="color:#a2f;font-weight:bold">return</span> result;
+});
+
+gulp.task(<span style="color:#b44">&#39;deploy:firebase&#39;</span>, <span style="color:#a2f;font-weight:bold">function</span>() {
+  <span style="color:#a2f;font-weight:bold">var</span> result <span style="color:#666">=</span> exec(<span style="color:#b44">&#34;firebase deploy&#34;</span>, {encoding<span style="color:#666">:</span> <span style="color:#b44">&#39;utf-8&#39;</span>});
+    gutil.log(<span style="color:#b44">&#39;deploy:dev: \n&#39;</span> <span style="color:#666">+</span> result);
+    <span style="color:#a2f;font-weight:bold">return</span> result;
+});
+</code></pre></div></p>
+
+<p>Now I can just use <code>$ gulp deploy:dev</code> to deploy it using <code>rsync</code> over SSH in order to give someone remote access or <code>$ gulp deploy:prod</code> to deploy it to the productive instance on firebase.</p>
+
+<h1 id="adding-initializer-to-template">Adding initializer to template</h1>
+
+<p>After looking at different implementations on how to best register the Service Worker, I ended up with following snippet (I think it&rsquo;s mainly code snippets from a sample of the google chrome team).
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#080;font-style:italic">&lt;!--</span> Offline cache mit service worker <span style="color:#666">--&gt;</span>
+<span style="color:#666">&lt;</span>script type<span style="color:#666">=</span><span style="color:#b44">&#34;text/javascript&#34;</span><span style="color:#666">&gt;</span>
+	<span style="color:#a2f;font-weight:bold">if</span>(<span style="color:#b44">&#39;serviceWorker&#39;</span> <span style="color:#a2f;font-weight:bold">in</span> navigator) {
+		navigator.serviceWorker
+			.register(<span style="color:#b44">&#39;/sw.js&#39;</span>)
+			.then(<span style="color:#a2f;font-weight:bold">function</span>() {});
+	}
+	<span style="color:#b44">&#39;use strict&#39;</span>;
+
+	<span style="color:#a2f;font-weight:bold">if</span> (<span style="color:#b44">&#39;serviceWorker&#39;</span> <span style="color:#a2f;font-weight:bold">in</span> navigator) {
+	  <span style="color:#a2f">window</span>.addEventListener(<span style="color:#b44">&#39;load&#39;</span>, <span style="color:#a2f;font-weight:bold">function</span>() {
+	    navigator.serviceWorker.register(<span style="color:#b44">&#39;/sw.js&#39;</span>).then(<span style="color:#a2f;font-weight:bold">function</span>(reg) {
+	      <span style="color:#080;font-style:italic">// updatefound is fired if sw.js changes.
+</span><span style="color:#080;font-style:italic"></span>	      reg.onupdatefound <span style="color:#666">=</span> <span style="color:#a2f;font-weight:bold">function</span>() {
+	        <span style="color:#a2f;font-weight:bold">var</span> installingWorker <span style="color:#666">=</span> reg.installing;
+
+	        installingWorker.onstatechange <span style="color:#666">=</span> <span style="color:#a2f;font-weight:bold">function</span>() {
+	          <span style="color:#a2f;font-weight:bold">switch</span> (installingWorker.state) {
+	            <span style="color:#a2f;font-weight:bold">case</span> <span style="color:#b44">&#39;installed&#39;</span><span style="color:#666">:</span>
+	              <span style="color:#a2f;font-weight:bold">if</span> (navigator.serviceWorker.controller) {
+	                console.log(<span style="color:#b44">&#39;New or updated content is available. Please refresh.&#39;</span>);
+	              } <span style="color:#a2f;font-weight:bold">else</span> {
+	                console.log(<span style="color:#b44">&#39;Content is now available offline!&#39;</span>);
+	              }
+	              <span style="color:#a2f;font-weight:bold">break</span>;
+
+	            <span style="color:#a2f;font-weight:bold">case</span> <span style="color:#b44">&#39;redundant&#39;</span><span style="color:#666">:</span>
+	              console.error(<span style="color:#b44">&#39;The installing service worker became redundant.&#39;</span>);
+	              <span style="color:#a2f;font-weight:bold">break</span>;
+	          }
+	        };
+	      };
+	    }).<span style="color:#a2f;font-weight:bold">catch</span>(<span style="color:#a2f;font-weight:bold">function</span>(e) {
+	      console.error(<span style="color:#b44">&#39;Error during service worker registration:&#39;</span>, e);
+	    });
+	  });
+	}
+<span style="color:#666">&lt;</span><span style="">/script&gt;</span>
+</code></pre></div></p>
+
+<h1 id="results">Results</h1>
+
+<p>To see the results, you can go to <a href="https://robinson-schule.ch">https://robinson-schule.ch</a>, then disable networking (e.g. in chrome dev tools marking Offline, or really disable your wifi / enable airplane mode) and reload the page or even better close it and enter the address again and you will still have access to the page unless you&rsquo;re using an Apple iOS based mobile device or Safari or InternetExplorer (only Edge supports it).</p>
+
+<p>You can find more information on how to get started with PWA on the <a href="https://developers.google.com/web/progressive-web-apps/">Google developers PWA</a> page.</p>
+
+<h1 id="other-resources">Other resources</h1>
+
+<ul>
+<li><a href="https://github.com/justinribeiro/blog-pwa">An experiment in mixing Hugo and Polymer PRPL into a progressive web app blog</a></li>
+<li><a href="https://gohugohq.com/howto/go-offline-with-service-worker/">Go offline! Service Worker and Hugo</a></li>
+<li><a href="https://github.com/GoogleChrome/sw-precache">sw-precache library</a></li>
+</ul>
+		</div>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="/tags/hugo/" rel="tag">hugo</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/pwa/" rel="tag">PWA</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/serviceworker/" rel="tag">ServiceWorker</a></li>
+	</ul>
+</div>
+	</article>
+	
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Michel Racic avatar" src="//rac.su/img/rac-300x300.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About Michel Racic</span>
+	</div>
+	<div class="authorbox__description">
+		I’m a coding and technology freak. I finished once my bachelor of engineering in computer science or on german “Dipl. Ing.” and currently I’m mostly coding in Java as main language besides some stuff in C, C&#43;&#43;, C#, HTML, JS, … - In my day job I work as a Software Engineer in Test and deal with all kind of Software from Native over Web into Mainframe where I use existing tools or write my own testing apps or libraries and the Frameworks around that they can be used in the most efficient way.
+	</div>
+</div>
+	
+<nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<div class="post-nav__item post-nav__item--prev col-1-2">
+		<a class="post-nav__link" href="//rac.su/project/nina-w102-minimal-breakout/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">uBlox NINA-W102 minimal breakout</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next col-1-2">
+		<a class="post-nav__link" href="//rac.su/links/chinashopping/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">Cheap China shopping help</p></a>
+	</div>
+</nav>
+	
+<div class="comments">
+	<div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "rac-su" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+</div>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="//rac.su/" />
+	</form>
+</div>
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">Recent Posts</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/project/makezurich-pakman/">MakeZurich - PakMan</a></li>
+			<li class="widget__item"><a class="widget__link" href="/project/makezurich-18-badge/">MakeZurich 2018 Badge</a></li>
+			<li class="widget__item"><a class="widget__link" href="/project/nina-w102-minimal-breakout/">uBlox NINA-W102 minimal breakout</a></li>
+			<li class="widget__item"><a class="widget__link" href="/project/makezurich-mobifloc/">MakeZurich - MoBiFloC</a></li>
+			<li class="widget__item"><a class="widget__link" href="/libs/sensirion-sdp3x-driver/">Sensirion SDP3x Arduino driver</a></li>
+			<li class="widget__item"><a class="widget__link" href="/libs/">Libs</a></li>
+			<li class="widget__item"><a class="widget__link" href="/project/">Projects</a></li>
+		</ul>
+	</div>
+</div>
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">Categories</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="//rac.su/categories/arduino">Arduino</a></li>
+			<li class="widget__item"><a class="widget__link" href="//rac.su/categories/developement">Developement</a></li>
+			<li class="widget__item"><a class="widget__link" href="//rac.su/categories/howto">Howto</a></li>
+			<li class="widget__item"><a class="widget__link" href="//rac.su/categories/library">Library</a></li>
+			<li class="widget__item"><a class="widget__link" href="//rac.su/categories/links">Links</a></li>
+		</ul>
+	</div>
+</div>
+	
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/administration" title="administration">administration</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/apache" title="apache">apache</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/arduino" title="arduino">arduino</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/compile" title="compile">compile</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/development" title="development">development</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/firebase" title="firebase">firebase</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/friends" title="friends">friends</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/fun" title="fun">fun</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/git" title="git">git</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/google" title="google">google</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/hackathon" title="hackathon">hackathon</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/hacking" title="hacking">hacking</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/hosting" title="hosting">hosting</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/hugo" title="hugo">hugo</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/java" title="java">java</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/linux" title="linux">linux</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/lorawan" title="lorawan">lorawan</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/programming" title="programming">programming</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/pwa" title="pwa">pwa</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/scm" title="scm">scm</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/searching" title="searching">searching</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/security" title="security">security</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/sensor" title="sensor">sensor</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/serviceworker" title="serviceworker">serviceworker</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/shell" title="shell">shell</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/ssl" title="ssl">ssl</a>
+		<a class="widget__link widget__link--taglist" href="//rac.su/tags/witzig" title="witzig">witzig</a>
+	</div>
+</div>
+</aside>
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2018 Michel Racic.<span style="float: right;"><a style="cursor: default; color: #3b3b3b;" href="/π">π</a></span></p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-92066434-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+</body>
+</html>

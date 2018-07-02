@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Security on RAC&#39;s notepad</title>
+    <link>//rac.su/tags/security/</link>
+    <description>Recent content in Security on RAC&#39;s notepad</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 05 Jun 2008 14:45:52 +0100</lastBuildDate>
+    
+	<atom:link href="//rac.su/tags/security/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Scanning a Filesystem for files with weak restrictions</title>
+      <link>//rac.su/security/world-writeable-files/</link>
+      <pubDate>Thu, 05 Jun 2008 14:45:52 +0100</pubDate>
+      
+      <guid>//rac.su/security/world-writeable-files/</guid>
+      <description>&lt;p&gt;Howto find world writable files that could be attacked on your server?&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Apache Force SSL on vhost</title>
+      <link>//rac.su/wiki/apache-force-ssl-on-vhost/</link>
+      <pubDate>Mon, 31 Dec 2007 11:44:11 +0000</pubDate>
+      
+      <guid>//rac.su/wiki/apache-force-ssl-on-vhost/</guid>
+      <description>&lt;p&gt;Howto configure Apache to redirect all http requests to the SSL version of the site.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

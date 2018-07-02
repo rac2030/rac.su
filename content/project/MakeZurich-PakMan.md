@@ -15,8 +15,7 @@ thumbnail = "/project/makezurich-mobifloc/MakeZurich-logo.png"
 +++
 
 Project entry for the [MakeZurich](https://makezurich.ch) 2018 Hackathon.
-
-
+A delivery box which monitors the environment of it's content and send an alarm via LoRaWAN in case a threshold breach gets detected.
 
 <!--more-->
 

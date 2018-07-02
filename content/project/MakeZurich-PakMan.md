@@ -78,6 +78,9 @@ The rest of the code and how to interface the sensor module you can see in the s
 On the other side, we did setup [Hivemind](https://hivemind.ch) using the sponsored MakeZurich account which did receive those packets nearly in realtime.
 {{<figure src="hivemind-data.png" caption="Hivemind platform showing LoRa packets received">}}
 
+{{<figure class="floatright30" src="sosbutton-back.jpg">}}
+Shortly before the presentation, what needs to run out will run out and the battery died. Having no replacement batteries for that 3V coin cell, I just soldered some cables to the battery holder on the PCB and we did power it from the teensy.
+
 ## Source code
 The Arduino source is available as gist on GitHub @ 
 https://gist.github.com/rac2030/cad175b2b7370aac7197be80f413b6d1

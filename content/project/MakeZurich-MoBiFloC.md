@@ -43,7 +43,7 @@ In order to enrich environmental data collection, we wanted to get current tempe
 As a bonus and as we had the uBlox GPS on hand, we considered having a button on the measuring unit for initializing it after it has been placed. It would then transmit the current GPS position for the data that gets logged from this device. The benefit of an automated procedure for the operator is not to have to manually enter GPS data into some tool; also it prevents human error. To save the bandwidth the initialization procedure would only be required when the sensor gets relocated.
 
 ## Used Hardware
-From the [MakeZurich kit](https://makezurich.ch/box/3/), we used:
+From the MakeZurich kit (Box #3) , we used:
 
 * Arduino Pro Mini 3.3V (8MHz)
 * [Microchip RN2483 LoRaWAN modem](https://github.com/rac2030/MakeZurich/wiki/Hello-Lora-with-Arduino-Pro-mini-and-Microchip-RN2483)
@@ -97,7 +97,7 @@ The reason we only send data every 10 minutes (during demo every 1 minute) is th
 {{<figure src="closeup-final-breadboard.jpg" caption="Final breadboard after getting home again and a goooooooooooooooood night (sunday) of sleep">}}
 
 ## Source code
-The Arduino and the NodeJS WebApplication is available on on GitHub @ 
+The Arduino and the NodeJS WebApplication is available on GitHub @ 
 https://github.com/rac2030/MakeZurich/tree/master/MoBiFloC
 
 ## Videos
@@ -112,4 +112,4 @@ https://github.com/rac2030/MakeZurich/tree/master/MoBiFloC
 
 ## Speaker deck of all challenges
 Our challenge is on Slide 19 to 22
-{{< speakerdeck d1a88578acb34ebdbd62c8e5c36c96f0 >}}
+speakerdeck d1a88578acb34ebdbd62c8e5c36c96f0

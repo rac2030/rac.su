@@ -22,7 +22,7 @@ jobs:
           # extended: true
 
       - name: Build
-        run: hugo --minify
+        run: hugo --buildDrafts=false
 
        # Step 5 - Create name file
       - name: Create cname file

@@ -24,6 +24,10 @@ jobs:
       - name: Build
         run: hugo --minify
 
+       # Step 5 - Create name file
+      - name: Create cname file
+        run: echo 'rac.su' > public/CNAME
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         if: github.ref == 'refs/heads/main'
